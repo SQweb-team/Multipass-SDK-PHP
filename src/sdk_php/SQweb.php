@@ -11,7 +11,7 @@ class SQweb
 
     private $response;
 
-    public function sqweb_check_credits() {
+    public function sqwebCheckCredits() {
         if (empty($this->response)) {
             $site_id = null;
             if (defined('ID_SITE')) {
@@ -45,17 +45,17 @@ class SQweb
         return (0);
     }
 
-    public function sqweb_script()
+    public function sqwebScript()
     {
         echo '<script>
-        var _sqw = {id_webmaster: '. ID_WEBMASTER .', id_site: '. ID_SITE .', debug: '. DEBUG .', targeting: '. TARGETING .', beacon: '. BEACON .', dwide: '. DWIDE .'};
+        var _sqw = {id_webmaster: '. ID_WEBMASTER .', id_site: '. ID_SITE .', debug: '. DEBUG .', targeting: '. TARGETING .', beacon: '. BEACON .', dwide: '. DWIDE .', i18n: "'. LANG .'"};
         var script = document.createElement("script");
         script.type = "text/javascript";
         script.src = "//cdn.sqweb.com/sqweb-beta.js";
         document.getElementsByTagName("head")[0].appendChild(script);</script>';
     }
 
-    public function sqweb_button($color = null)
+    public function sqwebButton($color = null)
     {
         if ('grey' === $color) {
             echo '<div class="sqweb-button sqweb-grey"></div>';
