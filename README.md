@@ -1,6 +1,9 @@
 SDK SQweb
 ===
 
+[![Build Status](https://travis-ci.org/SQweb-team/SQweb-SDK-PHP.svg)](https://travis-ci.org/SQweb-team/SQweb-SDK-PHP)
+[![Code Climate](https://codeclimate.com/github/SQweb-team/SQweb-SDK-PHP/badges/gpa.svg)](https://codeclimate.com/github/SQweb-team/SQweb-SDK-PHP)
+
 ##Install
 
 1. Download the SDK and put in your site folder ;
