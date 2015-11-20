@@ -1,6 +1,7 @@
 <?php
 
-class SQweb {
+class SQweb
+{
 
     /**
      * Send an http request to the api
@@ -10,8 +11,9 @@ class SQweb {
 
     public function sqweb_check_credits() {
         $site_id = null;
-        if (defined('ID_SITE'))
+        if (defined('ID_SITE')) {
             $site_id = ID_SITE;
+        }
         if (isset($_COOKIE['sqw_z']) && null !== $site_id) {
             $cookiez = $_COOKIE['sqw_z'];
         } else {
@@ -29,7 +31,6 @@ class SQweb {
             ),
         ));
         $response = curl_exec($curl);
-        $err = curl_error($curl);
         curl_close($curl);
 
         $response = json_decode($response);
