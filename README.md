@@ -7,7 +7,7 @@ SDK SQweb
 ##Install
 
 1. Download the SDK and put in your site folder ;
-2. Define your Website ID and User ID in `sqweb-php-sdk/init.php` ;
+2. Define your Website ID and User ID in `config.php` ;
 3. Include the SDK in all pages where you need use it.
 
 ```php
