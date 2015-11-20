@@ -1,5 +1,7 @@
 <?php
 
+namespace SQweb;
+
 class SQweb
 {
 
@@ -11,7 +13,8 @@ class SQweb
 
     private $response;
 
-    public function sqwebCheckCredits() {
+    public function sqwebCheckCredits()
+    {
         if (empty($this->response)) {
             $site_id = null;
             if (defined('ID_SITE')) {
@@ -48,7 +51,14 @@ class SQweb
     public function sqwebScript()
     {
         echo '<script>
-        var _sqw = {id_webmaster: '. ID_WEBMASTER .', id_site: '. ID_SITE .', debug: '. DEBUG .', targeting: '. TARGETING .', beacon: '. BEACON .', dwide: '. DWIDE .', i18n: "'. LANG .'"};
+            var _sqw = {
+                id_webmaster: '. ID_WEBMASTER .',
+                id_site: '. ID_SITE .',
+                debug: '. DEBUG .',
+                targeting: '. TARGETING .',
+                beacon: '. BEACON .',
+                dwide: '. DWIDE .',
+                i18n: "'. LANG .'"};
         var script = document.createElement("script");
         script.type = "text/javascript";
         script.src = "//cdn.sqweb.com/sqweb-beta.js";
