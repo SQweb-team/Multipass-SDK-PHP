@@ -1,0 +1,21 @@
+{
+    "name": "sqweb/sdk_php",
+    "license": "GPL v3",
+    "authors": [
+        {
+            "name": "Pierre Lavaux",
+            "email": "pierre@sqweb.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Bastien Botella",
+            "email": "bastien@sqweb.com",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+    "php": ">= 5.2.0",
+    "ext-curl": "*"
+    }
+}
