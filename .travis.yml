@@ -15,4 +15,4 @@ script:
     - phpcs --standard=PSR2 . --extensions=php
 
 notifications:
-    slack: sqweb:8N9C4bVLkf7W2NaCkjDahTpv
+    slack: sqweb:6itfzHb8hydraMDj5Gk8kkVE
