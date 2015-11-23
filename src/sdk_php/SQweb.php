@@ -21,28 +21,25 @@ class SQweb
                 $site_id = ID_SITE;
             }
             if (isset($_COOKIE['sqw_z']) && null !== $site_id) {
-                $cookiez = $_COOKIE['sqw_z'];
-            } else {
-                return (0);
-            }
-            $curl = curl_init();
-            curl_setopt_array($curl, array(
-                CURLOPT_URL => 'https://api.sqweb.com/token/check',
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_CONNECTTIMEOUT_MS => 1000,
-                CURLOPT_TIMEOUT_MS => 1000,
-                CURLOPT_POSTFIELDS => array(
-                    'token' => $cookiez,
-                    'site_id' => $site_id,
-                ),
-            ));
-            $response = curl_exec($curl);
-            curl_close($curl);
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => 'https://api.sqweb.com/token/check',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_CONNECTTIMEOUT_MS => 1000,
+                    CURLOPT_TIMEOUT_MS => 1000,
+                    CURLOPT_POSTFIELDS => array(
+                        'token' => $_COOKIE['sqw_z'],
+                        'site_id' => $site_id,
+                    ),
+                ));
+                $response = curl_exec($curl);
+                curl_close($curl);
 
-            $response = json_decode($response);
-            $this->response = $response;
+                $response = json_decode($response);
+                $this->response = $response;
+            }
         }
-        if ($this->response != null && $this->response->status === true && $this->response->credit > 0) {
+        if ($this->response !== null && $this->response->status === true && $this->response->credit > 0) {
             return ($this->response->credit);
         }
         return (0);
