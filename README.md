@@ -1,4 +1,4 @@
-SDK SQweb
+SQweb - PHP SDK
 ===
 
 [![Build Status](https://travis-ci.org/SQweb-team/SQweb-SDK-PHP.svg)](https://travis-ci.org/SQweb-team/SQweb-SDK-PHP)
@@ -8,7 +8,7 @@ SDK SQweb
 
 ###Using Composer (Recommended)
 
-1. `composer require sqweb/sdk_php` ;
+1. In your project root, execute `composer require sqweb/sdk_php` ;
 2. Define your Website ID and User ID in `vendor/sqweb/sdk_php/src/init.php`.
 
 ###Manually
