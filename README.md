@@ -23,7 +23,7 @@ The SDK is super basic. Here's how to use it :
 This function outputs the SQweb JavaScript tag. Insert it before the closing `</body>` tag in your HTML.
 
 ```php
-$sqweb->sqwebScript();
+$sqweb->script();
 ```
 
 Make sure it is present on all your pages. Most likely you'll just have to add it to your template.
@@ -35,7 +35,7 @@ This function checks if the user has credits, so that you can disable ads and/or
 You can use it like this :
 
 ```php
-if ($sqweb->sqwebCheckCredits() > 0) {
+if ($sqweb->checkCredits() > 0) {
     //CONTENT
 } else {
     //ADS
@@ -47,7 +47,7 @@ if ($sqweb->sqwebCheckCredits() > 0) {
 Finally, use this code to get the SQweb button on your pages:
 
 ```php
-$sqweb->sqwebButton('blue');
+$sqweb->button('blue');
 ```
 
 This function takes one optional parameter, the color. You can switch between `blue` (default) and `grey`.

@@ -13,7 +13,7 @@ class SQweb
 
     private $response;
 
-    public function sqwebCheckCredits()
+    public function checkCredits()
     {
         if (empty($this->response)) {
             $site_id = null;
@@ -45,7 +45,7 @@ class SQweb
         return (0);
     }
 
-    public function sqwebScript()
+    public function script()
     {
         echo '<script>
             var _sqw = {
@@ -62,7 +62,7 @@ class SQweb
         document.getElementsByTagName("head")[0].appendChild(script);</script>';
     }
 
-    public function sqwebButton($color = null)
+    public function button($color = null)
     {
         if ('grey' === $color) {
             echo '<div class="sqweb-button sqweb-grey"></div>';
