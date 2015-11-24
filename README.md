@@ -6,6 +6,13 @@ SDK SQweb
 
 ##Install
 
+###Using Composer (Recommended)
+
+1. `composer require sqweb/sdk_php` ;
+2. Define your Website ID and User ID in `vendor/sqweb/sdk_php/src/init.php`.
+
+###Manually
+
 1. Download the SDK and add it to your site folder ;
 2. Define your Website ID and User ID in `config.php` ;
 3. Include the SDK in all pages where you need use it.
@@ -13,6 +20,11 @@ SDK SQweb
 ```php
 include_once 'sqweb-php-sdk/init.php';
 ```
+
+###WordPress
+
+If you're using WordPress, we've made it easy for you. You can download the SQweb plugin [directly from WordPress.org](https://wordpress.org/plugins/sqweb/), or check out the source [here](https://github.com/SQweb-team/SQweb-WordPress-Plugin).
+
 
 ##Usage
 
