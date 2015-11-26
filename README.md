@@ -13,9 +13,10 @@ SQweb - PHP SDK
 
 ###Manually
 
-1. Download the SDK and add it to your site folder ;
-2. Define your Website ID and User ID in `config.php` ;
-3. Include the SDK in all pages where you need use it.
+1. Download the latest release of the SDK [from here](https://github.com/SQweb-team/SQweb-SDK-PHP/releases) ;
+2. Create a `sqweb-php-sdk` folder in your project root, and copy the contents of `src/` into it ;
+3. Define your Website ID and User ID in `config.php` ;
+4. Include the SDK in all pages where you need use it.
 
 ```php
 include_once 'sqweb-php-sdk/init.php';
@@ -39,6 +40,8 @@ $sqweb->script();
 ```
 
 Make sure it is present on all your pages. Most likely you'll just have to add it to your template.
+
+**If you previously had a SQweb JavaScript tag, make sure to remove it to avoid any conflicts.**
 
 ###2. Checking the credits of your subscribers
 
