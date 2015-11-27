@@ -1,4 +1,4 @@
-SDK SQweb
+SQweb - PHP SDK
 ===
 
 [![Build Status](https://travis-ci.org/SQweb-team/SQweb-SDK-PHP.svg)](https://travis-ci.org/SQweb-team/SQweb-SDK-PHP)
@@ -6,13 +6,26 @@ SDK SQweb
 
 ##Install
 
-1. Download the SDK and put in your site folder ;
-2. Define your Website ID and User ID in `sqweb-php-sdk/init.php` ;
-3. Include the SDK in all pages where you need use it.
+###Using Composer (Recommended)
+
+1. In your project root, execute `composer require sqweb/sdk_php` ;
+2. Define your Website ID and User ID in `vendor/sqweb/sdk_php/src/init.php`.
+
+###Manually
+
+1. Download the latest release of the SDK [from here](https://github.com/SQweb-team/SQweb-SDK-PHP/releases) ;
+2. Create a `sqweb-php-sdk` folder in your project root, and copy the contents of `src/` into it ;
+3. Define your Website ID and User ID in `config.php` ;
+4. Include the SDK in all pages where you need use it.
 
 ```php
-    include_once 'sqweb-php-sdk/init.php';
+include_once 'sqweb-php-sdk/init.php';
 ```
+
+###WordPress
+
+If you're using WordPress, we've made it easy for you. You can download the SQweb plugin [directly from WordPress.org](https://wordpress.org/plugins/sqweb/), or check out the source [here](https://github.com/SQweb-team/SQweb-WordPress-Plugin).
+
 
 ##Usage
 
@@ -23,10 +36,12 @@ The SDK is super basic. Here's how to use it :
 This function outputs the SQweb JavaScript tag. Insert it before the closing `</body>` tag in your HTML.
 
 ```php
-    $sqweb->sqwebScript();
+$sqweb->script();
 ```
 
 Make sure it is present on all your pages. Most likely you'll just have to add it to your template.
+
+**If you previously had a SQweb JavaScript tag, make sure to remove it to avoid any conflicts.**
 
 ###2. Checking the credits of your subscribers
 
@@ -35,11 +50,11 @@ This function checks if the user has credits, so that you can disable ads and/or
 You can use it like this :
 
 ```php
-    if ($sqweb->sqwebCheckCredits() > 0) {
-	    //CONTENT
-	} else {
-	 	//ADS
-	}
+if ($sqweb->checkCredits() > 0) {
+    //CONTENT
+} else {
+    //ADS
+}
 ```
 
 ###3. Showing the SQweb button
@@ -47,7 +62,7 @@ You can use it like this :
 Finally, use this code to get the SQweb button on your pages:
 
 ```php
-	$sqweb->sqwebButton('blue');
+$sqweb->button('blue');
 ```
 
 This function takes one optional parameter, the color. You can switch between `blue` (default) and `grey`.
