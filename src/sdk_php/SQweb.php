@@ -58,7 +58,8 @@ class SQweb
                 targeting: '. TARGETING .',
                 beacon: '. BEACON .',
                 dwide: '. DWIDE .',
-                i18n: "'. LANG .'"};
+                i18n: "'. LANG .'",
+                msg: "'. MESSAGE .'"};
         var script = document.createElement("script");
         script.type = "text/javascript";
         script.src = "//cdn.sqweb.com/sqweb-beta.js";

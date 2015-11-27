@@ -5,4 +5,4 @@ define('DEBUG', 'false');
 define('TARGETING', 'false');
 define('BEACON', 'false');
 define('DWIDE', 'false');
-define('LANG', 'en');
+define('LANG', 'fr');
