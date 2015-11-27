@@ -11,12 +11,14 @@ SQweb - PHP SDK
 1. In your project root, execute `composer require sqweb/sdk_php` ;
 2. Define your Website ID and User ID in `vendor/sqweb/sdk_php/src/init.php`.
 
+For additional settings, see "Options" below.
+
 ###Manually
 
 1. Download the latest release of the SDK [from here](https://github.com/SQweb-team/SQweb-SDK-PHP/releases) ;
 2. Create a `sqweb-php-sdk` folder in your project root, and copy the contents of `src/` into it ;
-3. Define your Website ID and User ID in `config.php` ;
-4. Include the SDK in all pages where you need use it.
+3. Define your Website ID and User ID in `config.php`. For additional settings, see "Options" below ;
+4. Include the SDK in all pages where you need to use it :
 
 ```php
 include_once 'sqweb-php-sdk/init.php';
@@ -66,3 +68,16 @@ $sqweb->button('blue');
 ```
 
 This function takes one optional parameter, the color. You can switch between `blue` (default) and `grey`.
+
+##Options
+
+Unless otherwise noted, these options default to `false`. You can set them in `config.php`.
+
+|Option|Description
+|---|---|
+|`msg`|A custom message that will be shown to your adblockers.|
+|`targeting`|Only show the button to detected adblockers. Cannot be combined with the `beacon` mode.|
+|`beacon`|Monitor adblocking rates quietly, without showing a SQweb button or banner to the end users.|
+|`debug`|Output various messages to the browser console while the plugin executes.|
+|`dwide`|Set to `false` to only enable SQweb on the current domain. Defaults to `true`.|
+|`lang`|You may pick between `en` and `fr`.|
