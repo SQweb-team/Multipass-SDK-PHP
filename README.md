@@ -3,6 +3,8 @@ SQweb - PHP SDK
 
 [![Build Status](https://travis-ci.org/SQweb-team/SQweb-SDK-PHP.svg)](https://travis-ci.org/SQweb-team/SQweb-SDK-PHP)
 [![Code Climate](https://codeclimate.com/github/SQweb-team/SQweb-SDK-PHP/badges/gpa.svg)](https://codeclimate.com/github/SQweb-team/SQweb-SDK-PHP)
+[![Latest Stable Version](https://poser.pugx.org/sqweb/sdk_php/v/stable)](https://packagist.org/packages/sqweb/sdk_php)
+[![License](https://poser.pugx.org/sqweb/sdk_php/license)](https://packagist.org/packages/sqweb/sdk_php)
 
 ##Install
 
@@ -15,12 +17,12 @@ If you're using WordPress, we've made it easy for you. Download the SQweb plugin
 1. In your project root, execute `composer require sqweb/sdk_php` ;
 2. Define your Website ID and User ID in `vendor/sqweb/sdk_php/src/init.php`.
 
-For additional settings, see "Options" below.
+For additional settings, see "[Options](#options)" below.
 
 ###Manually
 
 1. Download the latest release of the SDK [from here](https://github.com/SQweb-team/SQweb-SDK-PHP/releases) and unzip it in your project root ;
-2. Define your Website ID and User ID in `sqweb-sdk-php/config.php`. For additional settings, see "[Options](#Options)" below ;
+2. Define your Website ID and User ID in `sqweb-sdk-php/config.php`. For additional settings, see "[Options](#options)" below ;
 3. Include the SDK everywhere you need it (most likely, all your pages) :
 
 ```php
@@ -73,12 +75,27 @@ Unless otherwise noted, these options default to `false`. You can set them in `c
 
 |Option|Description
 |---|---|
-|`msg`|A custom message that will be shown to your adblockers. If you're using quotes, you must escape them.|
+|`msg`|A custom message that will be shown to your adblockers. If using quotes, you must escape them.|
 |`targeting`|Only show the button to detected adblockers. Cannot be combined with the `beacon` mode.|
 |`beacon`|Monitor adblocking rates quietly, without showing a SQweb button or banner to the end users.|
 |`debug`|Output various messages to the browser console while the plugin executes.|
 |`dwide`|Set to `false` to only enable SQweb on the current domain. Defaults to `true`.|
 |`lang`|You may pick between `en` and `fr`.|
+
+
+##Contributing
+
+We welcome contributions and improvements.
+
+###Coding Style
+
+All PHP code must conform to the [PSR2 Standard](http://www.php-fig.org/psr/psr-2/).
+
+###Builds and Releases
+
+Releases are handled with `gulp`. To package a release of the SDK, simply execute `gulp`. This will prepare a zip for you in `dist/`.
+
+By default, the `build/` folder is automatically removed. If you want to keep it, say for debugging, you can package the SDK using `gulp keep-build`.
 
 ##Bugs and Security Vulnerabilities
 

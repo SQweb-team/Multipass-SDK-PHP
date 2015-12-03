@@ -19,6 +19,7 @@
         "ext-curl": "*"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^2.4"
+        "squizlabs/php_codesniffer": "^2.4",
+        "sebastian/phpcpd": "^2.0"
     }
 }
