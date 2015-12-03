@@ -14,13 +14,14 @@ matrix:
         - php: hhvm
 
 before_script:
-   - pear config-set auto_discover 1
-   - pear install PHP_CodeSniffer
-   - phpenv rehash
-   - phpcs -i
+    - composer self-update
+    - composer install
+    - phpenv rehash
+    - vendor/bin/phpcs -i
 
 script:
-    - phpcs --standard=PSR2 . --extensions=php
+    - vendor/bin/phpcs --standard=PSR2 src/ --extensions=php
 
 notifications:
     slack: sqweb:6itfzHb8hydraMDj5Gk8kkVE
+    email: false
