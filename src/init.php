@@ -1,5 +1,13 @@
 <?php
-    include_once 'config.php';
-    include_once 'sdk_php/SQweb.php';
+/*
+ * SQweb PHP SDK
+ * @author Pierre Lavaux <pierre@sqweb.com>
+ * @author Bastien Botella <bastien@sqweb.com>
+ * @link https://github.com/SQweb-team/SQweb-SDK-PHP
+ * @license http://opensource.org/licenses/GPL-3.0
+ */
 
-    $sqweb = new SQweb\SQweb;
+include_once 'config.php';
+include_once 'sdk_php/SQweb.php';
+
+$sqweb = new SQweb\SQweb;

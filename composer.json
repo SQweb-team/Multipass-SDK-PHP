@@ -15,7 +15,10 @@
     ],
     "minimum-stability": "stable",
     "require": {
-    "php": ">= 5.2.0",
-    "ext-curl": "*"
+        "php": ">= 5.2.0",
+        "ext-curl": "*"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^2.4"
     }
 }

@@ -1,18 +1,24 @@
 <?php
+/*
+ * SQweb PHP SDK
+ * @author Pierre Lavaux <pierre@sqweb.com>
+ * @author Bastien Botella <bastien@sqweb.com>
+ * @link https://github.com/SQweb-team/SQweb-SDK-PHP
+ * @license http://opensource.org/licenses/GPL-3.0
+ */
 
 namespace SQweb;
 
 class SQweb
 {
 
-    /**
-     * Send an http request to the api
-     * returns true if logged, 0 if not
-     * @return int
-     */
-
     private $response;
 
+    /**
+     * Query the API for auth and credits status.
+     * Returns the credits, or 0.
+     * @return int
+     */
     public function checkCredits()
     {
         if (empty($this->response)) {
@@ -35,8 +41,7 @@ class SQweb
                 $response = curl_exec($curl);
                 curl_close($curl);
 
-                $response = json_decode($response);
-                $this->response = $response;
+                $this->response = json_decode($response);
             }
         }
         if ($this->response !== null && $this->response->status === true && $this->response->credit > 0) {
@@ -63,6 +68,10 @@ class SQweb
         document.getElementsByTagName("head")[0].appendChild(script);</script>';
     }
 
+    /**
+     * Create the target button div.
+     * @param null $color
+     */
     public function button($color = null)
     {
         if ('grey' === $color) {

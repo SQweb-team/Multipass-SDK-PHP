@@ -6,6 +6,10 @@ SQweb - PHP SDK
 
 ##Install
 
+**This package is intended for custom PHP websites and advanced integrations.**
+
+If you're using WordPress, we've made it easy for you. Download the SQweb plugin [directly from WordPress.org](https://wordpress.org/plugins/sqweb/), or check out the source [here](https://github.com/SQweb-team/SQweb-WordPress-Plugin).
+
 ###Using Composer (Recommended)
 
 1. In your project root, execute `composer require sqweb/sdk_php` ;
@@ -15,19 +19,13 @@ For additional settings, see "Options" below.
 
 ###Manually
 
-1. Download the latest release of the SDK [from here](https://github.com/SQweb-team/SQweb-SDK-PHP/releases) ;
-2. Create a `sqweb-php-sdk` folder in your project root, and copy the contents of `src/` into it ;
-3. Define your Website ID and User ID in `config.php`. For additional settings, see "Options" below ;
-4. Include the SDK in all pages where you need to use it :
+1. Download the latest release of the SDK [from here](https://github.com/SQweb-team/SQweb-SDK-PHP/releases) and unzip it in your project root ;
+2. Define your Website ID and User ID in `sqweb-sdk-php/config.php`. For additional settings, see "[Options](#Options)" below ;
+3. Include the SDK everywhere you need it (most likely, all your pages) :
 
 ```php
 include_once 'sqweb-php-sdk/init.php';
 ```
-
-###WordPress
-
-If you're using WordPress, we've made it easy for you. You can download the SQweb plugin [directly from WordPress.org](https://wordpress.org/plugins/sqweb/), or check out the source [here](https://github.com/SQweb-team/SQweb-WordPress-Plugin).
-
 
 ##Usage
 
@@ -75,9 +73,25 @@ Unless otherwise noted, these options default to `false`. You can set them in `c
 
 |Option|Description
 |---|---|
-|`msg`|A custom message that will be shown to your adblockers.|
+|`msg`|A custom message that will be shown to your adblockers. If you're using quotes, you must escape them.|
 |`targeting`|Only show the button to detected adblockers. Cannot be combined with the `beacon` mode.|
 |`beacon`|Monitor adblocking rates quietly, without showing a SQweb button or banner to the end users.|
 |`debug`|Output various messages to the browser console while the plugin executes.|
 |`dwide`|Set to `false` to only enable SQweb on the current domain. Defaults to `true`.|
 |`lang`|You may pick between `en` and `fr`.|
+
+##Bugs and Security Vulnerabilities
+
+If you encounter any bug or unexpected behavior, you can either report it on Github using the bug tracker, or via email at `hello@sqweb.com`. We will be in touch as soon as possible.
+
+If you discover a security vulnerability within SQweb or this plugin, please send an e-mail to `hello@sqweb.com`. All security vulnerabilities will be promptly addressed.
+
+##License
+
+Copyright (C) 2015 – SQweb
+
+This program is free software ; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation ; either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY ; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
+
+You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
