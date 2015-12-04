@@ -1,3 +1,7 @@
+### v1.0.4 - 2015-12-04
+
+* Added versioning to Curl User Agent.
+
 ### v1.0.3 - 2015-12-03
 
 * Improved documentation (Readme + comments).
