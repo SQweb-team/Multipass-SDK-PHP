@@ -26,7 +26,7 @@ For additional settings, see "[Options](#options)" below.
 3. Include the SDK everywhere you need it (most likely, all your pages) :
 
 ```php
-include_once 'sqweb-php-sdk/init.php';
+include_once 'sqweb-sdk-php/init.php';
 ```
 
 ##Usage
