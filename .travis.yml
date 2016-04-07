@@ -12,6 +12,10 @@ matrix:
     allow_failures:
         - php: hhvm
 
+cache:
+    directories:
+        - vendor
+
 before_script:
     - composer self-update
     - composer install
