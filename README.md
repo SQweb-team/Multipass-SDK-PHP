@@ -9,9 +9,9 @@ SQweb - PHP SDK
 
 ##Requirements
 
-**PHP 5.5 or greater is required to use this SDK.**
+**This SDK has been tested with PHP 5.5 and greater.**
 
-We are unable to provide support for earlier versions. For more information about end of life PHP branches, [see this page](http://php.net/supported-versions.php).
+We are unable to provide official support for earlier versions. For more information about end of life PHP branches, [see this page](http://php.net/supported-versions.php).
 
 ##Install
 
