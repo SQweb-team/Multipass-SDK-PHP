@@ -7,6 +7,12 @@ SQweb - PHP SDK
 [![License](https://poser.pugx.org/sqweb/sdk_php/license)](https://packagist.org/packages/sqweb/sdk_php)
 [![Dependency Status](https://www.versioneye.com/user/projects/5650b42bff016c002c00056f/badge.svg)](https://www.versioneye.com/user/projects/5650b42bff016c002c00056f)
 
+##Requirements
+
+**PHP 5.5 or greater is required to use this SDK.**
+
+We are unable to provide support for earlier versions. For more information about end of life PHP branches, [see this page](http://php.net/supported-versions.php).
+
 ##Install
 
 **This package is intended for custom PHP websites and advanced integrations.**
