@@ -26,5 +26,5 @@ script:
     - vendor/bin/phpcpd src/
 
 notifications:
-    slack: sqweb:6itfzHb8hydraMDj5Gk8kkVE
+    slack: nwork:g1c5FQpTcE9ZxPTAPdHsUwPr
     email: false
