@@ -11,6 +11,11 @@
             "name": "Bastien Botella",
             "email": "bastien@sqweb.com",
             "role": "Developer"
+        },
+        {
+            "name": "Mathieu Darrigade",
+            "email": "mathieu@sqweb.com",
+            "role": "Developer"
         }
     ],
     "minimum-stability": "stable",
