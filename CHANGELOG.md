@@ -1,3 +1,9 @@
+### v1.1 - 2016-05-24
+
+* Introduced autoloader support via Composer.
+* Introduced .env configuration.
+* Simplified manual installation.
+
 ### v1.0.4 - 2015-12-04
 
 * Added versioning to Curl User Agent.

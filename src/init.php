@@ -7,7 +7,6 @@
  * @license http://opensource.org/licenses/GPL-3.0
  */
 
-include_once 'config.php';
-include_once 'sdk_php/SQweb.php';
+include_once 'SQweb.php';
 
 $sqweb = new SQweb\SQweb;
