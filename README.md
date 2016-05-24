@@ -23,7 +23,7 @@ If you're using WordPress, we've made it easy for you. Download the SQweb plugin
 
 1. In your project root, execute `composer require sqweb/sdk_php` ;
 2. Create a file named `.env` at the root of your project, or edit it if you already have one.
-3. In `.env`, copy and paste the following configuration and set the variable `SQW_ID_SITE` with your own website ID:
+3. In `.env`, paste the following configuration and **set the variable `SQW_ID_SITE` with your website ID**:
 ```php
 SQW_ID_SITE=YOUR_WEBSITE_ID
 SQW_DEBUG=false
@@ -51,7 +51,7 @@ This file should be one level up from the sqweb folder you just created, i.e. :
 |-- sqweb_config.php
 ```
 
-3. In `sqweb_config.php`, copy and paste the following configuration and set the variable `SQW_ID_SITE` with your own website ID:
+3. In `sqweb_config.php`, paste the following configuration and **set the variable `SQW_ID_SITE` with your website ID**:
 ```php
 SQW_ID_SITE=YOUR_WEBSITE_ID
 SQW_DEBUG=false
