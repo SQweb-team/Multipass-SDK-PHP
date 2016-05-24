@@ -22,23 +22,40 @@ If you're using WordPress, we've made it easy for you. Download the SQweb plugin
 ###Using Composer (Recommended)
 
 1. In your project root, execute `composer require sqweb/sdk_php` ;
-2. Define your Website ID and User ID in `vendor/sqweb/sdk_php/src/init.php`.
+2. You need to create a file named ".env" at the root of your project.
+3. In this file, please copy and paste the following piece of code (this is the default configuration) and set the variable `SQW_ID_SITE` with your own website ID:
+```php
+SQW_ID_SITE=YOUR_WEBSITE_ID
+SQW_DEBUG=false
+SQW_TARGETING=false
+SQW_BEACON=false
+SQW_DWIDE=false
+SQW_LANG=en
+SQW_MESSAGE=
+```
 
 For additional settings, see "[Options](#options)" below.
 
 ###Manually
 
 1. Download the latest release of the SDK [from here](https://github.com/SQweb-team/SQweb-SDK-PHP/releases) and unzip it in your project root ;
-2. Define your Website ID and User ID in `sqweb-sdk-php/config.php`. For additional settings, see "[Options](#options)" below ;
-3. Include the SDK everywhere you need it (most likely, all your pages) :
-
+2. Create a file named sqweb_conf at the root of your project.
+3. In this file, please copy and paste the following piece of code (this is the default configuration) and set the variable `SQW_ID_SITE` with your own website ID:
 ```php
-include_once 'sqweb-sdk-php/init.php';
+SQW_ID_SITE=YOUR_WEBSITE_ID
+SQW_DEBUG=false
+SQW_TARGETING=false
+SQW_BEACON=false
+SQW_DWIDE=false
+SQW_LANG=en
+SQW_MESSAGE=
 ```
 
+For additional settings, see "[Options](#options)" below.
 ##Usage
 
 The SDK is super basic. Here's how to use it :
+First, you have to initialise the SQweb variable on the pages where you need it with this piece of code:
 
 ###1. Tagging your pages
 

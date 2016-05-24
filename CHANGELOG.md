@@ -1,3 +1,8 @@
+### v1.1 -2016-05-24
+
+* Added autoloader.
+* Made the configuration easier to set up.
+
 ### v1.0.4 - 2015-12-04
 
 * Added versioning to Curl User Agent.
