@@ -36,7 +36,7 @@ class SQweb
             $this->SQW_LANG = getenv('SQW_LANG');
             $this->SQW_MESSAGE = getenv('SQW_MESSAGE');
         } elseif ($opt == 'define') {
-            $file = file_get_contents(__DIR__.'/../../../../sqweb_config');
+            $file = file_get_contents(__DIR__.'/../../sqweb_config');
             $opts = explode(PHP_EOL, $file);
             foreach ($opts as $value) {
                 $tmp = explode('=', $value);
