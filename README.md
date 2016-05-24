@@ -22,8 +22,8 @@ If you're using WordPress, we've made it easy for you. Download the SQweb plugin
 ###Using Composer (Recommended)
 
 1. In your project root, execute `composer require sqweb/sdk_php` ;
-2. You need to create a file named ".env" at the root of your project.
-3. In this file, please copy and paste the following piece of code (this is the default configuration) and set the variable `SQW_ID_SITE` with your own website ID:
+2. Create a file named `.env` at the root of your project, or edit it if you already have one.
+3. In `.env`, copy and paste the following piece of code (this is the default configuration) and set the variable `SQW_ID_SITE` with your own website ID:
 ```php
 SQW_ID_SITE=YOUR_WEBSITE_ID
 SQW_DEBUG=false
@@ -38,10 +38,20 @@ For additional settings, see "[Options](#options)" below.
 
 ###Manually
 
-1. Download the latest release of the SDK [from here](https://github.com/SQweb-team/SQweb-SDK-PHP/releases) and unzip it in a folder named sqweb in your project root ;
-2. Create a file named sqweb_conf at the root of your project, we advise you to not have more than 2 folder to go through between the root of your project and the SQweb.php file.
+1. Download the latest release of the SDK [from here](https://github.com/SQweb-team/SQweb-SDK-PHP/releases) and unzip it in a folder named `sqweb` in your project root ;
+2. Create a file named `sqweb_config.php` at the root of your project.
 
-3. In this file, please copy and paste the following piece of code (this is the default configuration) and set the variable `SQW_ID_SITE` with your own website ID:
+This file should be one level up from the sqweb folder you just created, i.e. :
+
+```
+|–- sqweb/
+|	|-- src/
+|	|	|-- init.php
+|	|	|-- SQweb.php
+|-- sqweb_config.php
+```
+
+3. In `sqweb_config.php`, copy and paste the following piece of code (this is the default configuration) and set the variable `SQW_ID_SITE` with your own website ID:
 ```php
 SQW_ID_SITE=YOUR_WEBSITE_ID
 SQW_DEBUG=false
@@ -53,6 +63,7 @@ SQW_MESSAGE=
 ```
 
 For additional settings, see "[Options](#options)" below.
+
 ##Usage
 
 The SDK is super basic. Here's how to use it :

@@ -1,7 +1,8 @@
-### v1.1 -2016-05-24
+### v1.1 - 2016-05-24
 
-* Added autoloader.
-* Made the configuration easier to set up.
+* Introduced autoloader support via Composer.
+* Introduced .env configuration.
+* Simplified manual installation.
 
 ### v1.0.4 - 2015-12-04
 

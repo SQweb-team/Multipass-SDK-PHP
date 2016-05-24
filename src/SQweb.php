@@ -17,8 +17,8 @@ class SQweb
     public function __construct()
     {
         $conf = 'define';
-        if (file_exists(__DIR__.'/../../../../.env')) {
-            $env = new \Dotenv\Dotenv(__DIR__.'/../../../..');
+        if (file_exists(__DIR__ . '/../../../../.env')) {
+            $env = new \Dotenv\Dotenv(__DIR__ . '/../../../..');
             $env->load();
             $conf = 'dotenv';
         }
@@ -36,7 +36,7 @@ class SQweb
             $this->SQW_LANG = getenv('SQW_LANG');
             $this->SQW_MESSAGE = getenv('SQW_MESSAGE');
         } elseif ($opt == 'define') {
-            $file = file_get_contents(__DIR__.'/../../sqweb_config');
+            $file = file_get_contents(__DIR__ . '/../../sqweb_config.php');
             $opts = explode(PHP_EOL, $file);
             foreach ($opts as $value) {
                 $tmp = explode('=', $value);
@@ -65,7 +65,7 @@ class SQweb
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_CONNECTTIMEOUT_MS => 1000,
                     CURLOPT_TIMEOUT_MS => 1000,
-                    CURLOPT_USERAGENT => 'SQweb/SDK 1.0.4',
+                    CURLOPT_USERAGENT => 'SQweb/SDK 1.1',
                     CURLOPT_POSTFIELDS => array(
                         'token' => $_COOKIE['sqw_z'],
                         'site_id' => $site_id,
