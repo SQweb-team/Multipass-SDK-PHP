@@ -6,7 +6,7 @@
  * @link https://github.com/SQweb-team/SQweb-SDK-PHP
  * @license http://opensource.org/licenses/GPL-3.0
  */
-    include_once 'SQweb.php';
 
-    $sqweb = new SQweb\SQweb;
-?>
+include_once 'SQweb.php';
+
+$sqweb = new SQweb\SQweb;
