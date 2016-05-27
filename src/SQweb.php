@@ -7,6 +7,16 @@
  * @license http://opensource.org/licenses/GPL-3.0
  */
 
+/**
+ * Usage:
+ * <code>
+ * $sqweb = new \SQweb\SQweb();
+ * $sqweb = new \SQWeb\SQweb(['SQW_ID_SITE'=>1234]);
+ *
+ * $sqweb->script(); // outputs <script...>
+ * $sqweb->button(); // outputs <img src....>
+ * </code>
+ */
 namespace SQweb;
 
 class SQweb
@@ -14,35 +24,55 @@ class SQweb
 
     private $response;
 
-    public function __construct()
+    private $SQW_ID_SITE = null;
+    private $SQW_DEBUG = false;
+    private $SQW_TARGETING = false;
+    private $SQW_BEACON = false;
+    private $SQW_DWIDE = false;
+    private $SQW_LANG = 'en';
+    private $SQW_MESSAGE = '';
+
+    /**
+     * @param array $config (optional) with keys matcing the SQW_* class attributes.
+     */
+    public function __construct($config = array())
     {
-        $conf = 'define';
-        if (file_exists(__DIR__ . '/../../../../.env')) {
-            $env = new \Dotenv\Dotenv(__DIR__ . '/../../../..');
-            $env->load();
-            $conf = 'dotenv';
-        }
-        self::config($conf);
+        $this->loadConfig($config);
     }
 
-    public function config($opt)
+    private function loadConfig($config = array())
     {
-        if ($opt == 'dotenv') {
-            $this->SQW_ID_SITE = getenv('SQW_ID_SITE');
-            $this->SQW_DEBUG = getenv('SQW_DEBUG');
-            $this->SQW_TARGETING = getenv('SQW_TARGETING');
-            $this->SQW_BEACON = getenv('SQW_BEACON');
-            $this->SQW_DWIDE = getenv('SQW_DWIDE');
-            $this->SQW_LANG = getenv('SQW_LANG');
-            $this->SQW_MESSAGE = getenv('SQW_MESSAGE');
-        } elseif ($opt == 'define') {
-            $file = file_get_contents(__DIR__ . '/../../sqweb_config.php');
-            $opts = explode(PHP_EOL, $file);
-            foreach ($opts as $value) {
+        // Pass in an array
+        $config_keys = ['SQW_ID_SITE', 'SQW_DEBUG', 'SQW_TARGETING', 'SQW_BEACON', 'SQW_DWIDE', 'SQW_LANG', 'SQW_MESSAGE'];
+        if(!empty($config)) {
+            foreach($config_keys as $key) {
+                if(array_key_exists($key, $config)) {
+                    $this->$key = $config[$key];
+                }
+            }
+            return true;
+        }
+        // Or use dotenv
+        if (file_exists(__DIR__ . '/../../../../.env')) {
+            $env = new \Dotenv\Dotenv(__DIR__ . '/../../../..');
+            $env->required('SQW_ID_SITE')->notEmpty();
+            $env->load();
+            foreach($config_keys as $key) {
+                $this->$key = getenv($key);
+            }
+            return true;
+        }
+        // Or fallback to looking for sqweb_config.php
+        if (file_exists(__DIR__ . '/../../sqweb_config.php')) {
+            $lines = file(__DIR__ . '/../../sqweb_config.php');
+            foreach ($lines as $line) {
                 $tmp = explode('=', $value);
                 $key = $tmp[0];
-                $this->$key = $tmp[1];
+                if(in_array($key, $config_keys)) {
+                    $this->$key = $tmp[1];
+                }
             }
+            return true;
         }
     }
 
