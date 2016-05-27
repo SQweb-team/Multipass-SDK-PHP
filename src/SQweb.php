@@ -25,12 +25,12 @@ class SQweb
     private $response;
 
     private $SQW_ID_SITE = null;
-    private $SQW_DEBUG = false;
-    private $SQW_TARGETING = false;
-    private $SQW_BEACON = false;
-    private $SQW_DWIDE = false;
-    private $SQW_LANG = 'en';
-    private $SQW_MESSAGE = '';
+    private $SQW_DEBUG = "false";
+    private $SQW_TARGETING = "false";
+    private $SQW_BEACON = "false";
+    private $SQW_DWIDE = "false";
+    private $SQW_LANG = "en";
+    private $SQW_MESSAGE = "";
 
     /**
      * @param array $config (optional) with keys matcing the SQW_* class attributes.
