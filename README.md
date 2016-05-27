@@ -34,7 +34,7 @@ For additional settings, see "[Options](#options)" below.
 1. `composer require sqweb/sdk_php`
 2. Create a new SQweb object passing in its configuration through the constructor. **SQW\_ID\_SITE must be specified**.
 
-```
+```php
 require_once('vendor/autoload.php');
 $sqweb = new \SQweb\SQweb(['SQW_ID_SITE' => 1234, 'SQW_MESSAGE' => 'Please support my site']);
 ```
