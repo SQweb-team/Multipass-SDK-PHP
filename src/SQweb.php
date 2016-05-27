@@ -1,8 +1,6 @@
 <?php
 /*
  * SQweb PHP SDK
- * @author Pierre Lavaux <pierre@sqweb.com>
- * @author Bastien Botella <bastien@sqweb.com>
  * @link https://github.com/SQweb-team/SQweb-SDK-PHP
  * @license http://opensource.org/licenses/GPL-3.0
  */
@@ -25,12 +23,12 @@ class SQweb
     private $response;
 
     private $SQW_ID_SITE = null;
-    private $SQW_DEBUG = "false";
-    private $SQW_TARGETING = "false";
-    private $SQW_BEACON = "false";
-    private $SQW_DWIDE = "false";
-    private $SQW_LANG = "en";
-    private $SQW_MESSAGE = "";
+    private $SQW_DEBUG = 'false';
+    private $SQW_TARGETING = 'false';
+    private $SQW_BEACON = 'false';
+    private $SQW_DWIDE = 'false';
+    private $SQW_LANG = 'en';
+    private $SQW_MESSAGE = '';
 
     /**
      * @param array $config (optional) with keys matcing the SQW_* class attributes.
@@ -43,13 +41,22 @@ class SQweb
     private function loadConfig($config = array())
     {
         // Pass in an array
-        $config_keys = ['SQW_ID_SITE', 'SQW_DEBUG', 'SQW_TARGETING', 'SQW_BEACON', 'SQW_DWIDE', 'SQW_LANG', 'SQW_MESSAGE'];
-        if(!empty($config)) {
-            if(empty($config['SQW_ID_SITE'])) {
-                throw new InvalidArgumentException("SQW_ID_SITE MUST be defined.");
+        $config_keys = [
+            'SQW_ID_SITE',
+            'SQW_DEBUG',
+            'SQW_TARGETING',
+            'SQW_BEACON',
+            'SQW_DWIDE',
+            'SQW_LANG',
+            'SQW_MESSAGE'
+        ];
+
+        if (!empty($config)) {
+            if (empty($config['SQW_ID_SITE'])) {
+                throw new InvalidArgumentException('SQW_ID_SITE MUST be defined.');
             }
             foreach($config_keys as $key) {
-                if(array_key_exists($key, $config)) {
+                if (array_key_exists($key, $config)) {
                     $this->$key = $config[$key];
                 }
             }
@@ -60,7 +67,7 @@ class SQweb
             $env = new \Dotenv\Dotenv(__DIR__ . '/../../../..');
             $env->required('SQW_ID_SITE')->notEmpty();
             $env->load();
-            foreach($config_keys as $key) {
+            foreach ($config_keys as $key) {
                 $this->$key = getenv($key);
             }
             return true;
