@@ -45,6 +45,9 @@ class SQweb
         // Pass in an array
         $config_keys = ['SQW_ID_SITE', 'SQW_DEBUG', 'SQW_TARGETING', 'SQW_BEACON', 'SQW_DWIDE', 'SQW_LANG', 'SQW_MESSAGE'];
         if(!empty($config)) {
+            if(empty($config['SQW_ID_SITE'])) {
+                throw new InvalidArgumentException("SQW_ID_SITE MUST be defined.");
+            }
             foreach($config_keys as $key) {
                 if(array_key_exists($key, $config)) {
                     $this->$key = $config[$key];
