@@ -55,7 +55,7 @@ class SQweb
             if (empty($config['SQW_ID_SITE'])) {
                 throw new InvalidArgumentException('SQW_ID_SITE MUST be defined.');
             }
-            foreach($config_keys as $key) {
+            foreach ($config_keys as $key) {
                 if (array_key_exists($key, $config)) {
                     $this->$key = $config[$key];
                 }
@@ -78,7 +78,7 @@ class SQweb
             foreach ($lines as $line) {
                 $tmp = explode('=', $value);
                 $key = $tmp[0];
-                if(in_array($key, $config_keys)) {
+                if (in_array($key, $config_keys)) {
                     $this->$key = $tmp[1];
                 }
             }
