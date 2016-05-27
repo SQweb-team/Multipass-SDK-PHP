@@ -54,10 +54,7 @@ class SQweb
     public function checkCredits()
     {
         if (empty($this->response)) {
-            $site_id = null;
-            if (defined('ID_SITE')) {
-                $site_id = ID_SITE;
-            }
+            $site_id = $this->SQW_ID_SITE;
             if (isset($_COOKIE['sqw_z']) && null !== $site_id) {
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
