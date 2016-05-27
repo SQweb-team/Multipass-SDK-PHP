@@ -19,7 +19,7 @@ We are unable to provide official support for earlier versions. For more informa
 
 If you're using WordPress, we've made it easy for you. Download the SQweb plugin [directly from WordPress.org](https://wordpress.org/plugins/sqweb/), or check out the source [here](https://github.com/SQweb-team/SQweb-WordPress-Plugin).
 
-###Using Composer (Recommended)
+###Using Composer and dotenv (Recommended)
 
 1. In your project root, execute `composer require sqweb/sdk_php` ;
 2. Create a file named `.env` at the root of your project, or edit it if you already have one.
@@ -32,6 +32,16 @@ SQW_BEACON=false
 SQW_DWIDE=false
 SQW_LANG=en
 SQW_MESSAGE=
+```
+
+###Using Composer and manual
+
+1. `composer require sqweb/sdk_php`
+2. Create a new SQweb object passing in it's configuration through the constructor. SQW\_ID\_SITE must be specified.
+
+```
+require_once('vendor/autoload.php');
+$sqweb = new \SQweb\SQweb(['SQW_ID_SITE' => 1234, 'SQW_MESSAGE' => 'Please support my site']);
 ```
 
 For additional settings, see "[Options](#options)" below.
