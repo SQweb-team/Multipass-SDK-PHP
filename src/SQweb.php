@@ -65,8 +65,8 @@ class SQweb
         // Or use dotenv
         if (file_exists(__DIR__ . '/../../../../.env')) {
             $env = new \Dotenv\Dotenv(__DIR__ . '/../../../..');
-            $env->required('SQW_ID_SITE')->notEmpty();
             $env->load();
+            $env->required('SQW_ID_SITE')->notEmpty();
             foreach ($config_keys as $key) {
                 $this->$key = getenv($key);
             }
