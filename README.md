@@ -32,7 +32,7 @@ For additional settings, see "[Options](#options)" below.
 ###Using Composer and manual
 
 1. `composer require sqweb/sdk_php`
-2. Create a new SQweb object passing in its configuration through the constructor. **SQW\_ID\_SITE must be specified**.
+2. Create a new SQweb object passing in its configuration through the constructor. **`SQW\_ID\_SITE` must be specified**.
 
 ```php
 require_once('vendor/autoload.php');
