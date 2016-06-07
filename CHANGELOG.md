@@ -1,3 +1,8 @@
+### v1.2 - 2016-06-07
+
+* Improved .env handling.
+* Added configuration via array.
+
 ### v1.1 - 2016-05-24
 
 * Introduced autoloader support via Composer.
@@ -24,6 +29,6 @@
 
 * Readme improvements.
 
-### v1.0.0 - 2011-11-24
+### v1.0.0 - 2015-11-24
 
 * Initial release.
