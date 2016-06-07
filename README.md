@@ -19,19 +19,24 @@ We are unable to provide official support for earlier versions. For more informa
 
 If you're using WordPress, we've made it easy for you. Download the SQweb plugin [directly from WordPress.org](https://wordpress.org/plugins/sqweb/), or check out the source [here](https://github.com/SQweb-team/SQweb-WordPress-Plugin).
 
-###Using Composer (Recommended)
+###Using Composer and dotenv (Recommended)
 
 1. In your project root, execute `composer require sqweb/sdk_php` ;
 2. Create a file named `.env` at the root of your project, or edit it if you already have one.
 3. In `.env`, paste the following configuration and **set the variable `SQW_ID_SITE` with your website ID**:
 ```php
 SQW_ID_SITE=YOUR_WEBSITE_ID
-SQW_DEBUG=false
-SQW_TARGETING=false
-SQW_BEACON=false
-SQW_DWIDE=false
-SQW_LANG=en
-SQW_MESSAGE=
+```
+For additional settings, see "[Options](#options)" below.
+
+###Using Composer and manual
+
+1. `composer require sqweb/sdk_php`
+2. Create a new SQweb object passing in its configuration through the constructor. **SQW\_ID\_SITE must be specified**.
+
+```php
+require_once('vendor/autoload.php');
+$sqweb = new \SQweb\SQweb(['SQW_ID_SITE' => 1234, 'SQW_MESSAGE' => 'Please support my site']);
 ```
 
 For additional settings, see "[Options](#options)" below.
@@ -52,34 +57,30 @@ This file should be one level up from the sqweb folder you just created, i.e. :
 ```
 
 3. In `sqweb_config.php`, paste the following configuration and **set the variable `SQW_ID_SITE` with your website ID**:
+
 ```php
 SQW_ID_SITE=YOUR_WEBSITE_ID
-SQW_DEBUG=false
-SQW_TARGETING=false
-SQW_BEACON=false
-SQW_DWIDE=false
-SQW_LANG=en
-SQW_MESSAGE=
 ```
 
 For additional settings, see "[Options](#options)" below.
 
 ##Usage
 
-The SDK is super basic. Here's how to use it :
-First, you have to initialise the SQweb variable on the pages where you need it with this piece of code:
+###1. Initializing the SDK
+
+You have to initialise the SQweb variable on the pages where you need it with this piece of code:
 
 If you used composer:
 ```php
 $sqweb = new SQweb\SQweb;
 ```
 
-If you installed this manually:
+If you installed manually:
 ```php
 include_once "whereYouInstalled/src/init.php";
 ```
 
-###1. Tagging your pages
+###2. Tagging your pages
 
 This function outputs the SQweb JavaScript tag. Insert it before the closing `</body>` tag in your HTML.
 
@@ -91,7 +92,7 @@ Make sure it is present on all your pages. Most likely you'll just have to add i
 
 **If you previously had a SQweb JavaScript tag, make sure to remove it to avoid any conflicts.**
 
-###2. Checking the credits of your subscribers
+###3. Checking the credits of your subscribers
 
 This function checks if the user has credits, so that you can disable ads and/or unlock premium content.
 
@@ -105,7 +106,7 @@ if ($sqweb->checkCredits() > 0) {
 }
 ```
 
-###3. Showing the SQweb button
+###4. Showing the SQweb button
 
 Finally, use this code to get the SQweb button on your pages:
 
@@ -117,16 +118,16 @@ This function takes one optional parameter, the color. You can switch between `b
 
 ##Options
 
-Unless otherwise noted, these options default to `false`. You can set them in `config.php`.
+Unless otherwise noted, these options default to `false`. You can set them in your configuration.
 
 |Option|Description
 |---|---|
-|`msg`|A custom message that will be shown to your adblockers. If using quotes, you must escape them.|
-|`targeting`|Only show the button to detected adblockers. Cannot be combined with the `beacon` mode.|
-|`beacon`|Monitor adblocking rates quietly, without showing a SQweb button or banner to the end users.|
-|`debug`|Output various messages to the browser console while the plugin executes.|
-|`dwide`|Set to `false` to only enable SQweb on the current domain. Defaults to `true`.|
-|`lang`|You may pick between `en` and `fr`.|
+|`SQW_MESSAGE`|A custom message that will be shown to your adblockers. If using quotes, you must escape them.|
+|`SQW_TARGETING`|Only show the button to detected adblockers. Cannot be combined with the `beacon` mode.|
+|`SQW_BEACON`|Monitor adblocking rates quietly, without showing a SQweb button or banner to the end users.|
+|`SQW_DEBUG`|Output various messages to the browser console while the plugin executes.|
+|`SQW_DWIDE`|Set to `false` to only enable SQweb on the current domain. Defaults to `true`.|
+|`SQW_LANG`|You may pick between `en` and `fr`.|
 
 
 ##Contributing
