@@ -20,10 +20,13 @@ before_script:
     - composer install --ignore-platform-reqs
     - phpenv rehash
     - vendor/bin/phpcs -i
+    - nvm install 0.12
+    - npm install
 
 script:
     - vendor/bin/phpcs --standard=PSR2 src/ --extensions=php
     - vendor/bin/phpcpd src/
+    - snyk test
 
 notifications:
     slack: nwork:g1c5FQpTcE9ZxPTAPdHsUwPr
