@@ -192,8 +192,8 @@ class SQweb
                     $final[] = '<span style="opacity: ' . $tmp . '">' . $arr_txt[ $begin ] . '</span>';
                     $alpha -= $lambda;
                 }
-                $begin++;
             }
+            $begin++;
         }
         foreach ($balise as $value) {
             $final[] = '</' . $value . '>';
