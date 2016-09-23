@@ -221,7 +221,7 @@ class SQweb
                 }
             }
             return false;
-        else {
+        } else {
             return true;
         }
     }
