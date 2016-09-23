@@ -146,7 +146,7 @@ class SQweb
         echo '<div class="sqweb-button"></div>';
     }
 
-    public function sqw_balise($balise, $match)
+    public function sqwBalise($balise, $match)
     {
         if (preg_match('/<(\w+)(?(?!.+\/>).*>|$)/', $match, $tmp)) {
             if (!isset($balise)) {
@@ -184,7 +184,7 @@ class SQweb
         while ($begin < $nbr) {
             if (isset($arr_txt[$begin + 1])) {
                 if (preg_match('/<.+?>/', $arr_txt[ $begin ], $match)) {
-                    $balise = sqw_balise($balise, $match[0]);
+                    $balise = sqwBalise($balise, $match[0]);
                     $final[] = $arr_txt[ $begin ];
                     $nbr++;
                 } else {
