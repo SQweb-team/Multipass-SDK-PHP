@@ -120,17 +120,15 @@ if ($sqweb->checkCredits() > 0) {
 ?>
 ```
 
-###4. Showing the SQweb button
+###4. Showing the Multipass button
 
-Finally, use this code to get the SQweb button on your pages:
+Finally, use this code to get the Multipass button on your pages:
 
 ```php
 <?php
-$sqweb->button('blue');
+$sqweb->button();
 ?>
 ```
-
-This function takes one optional parameter, the color. You can switch between `blue` (default) and `grey`.
 
 ###5. More functions
 
