@@ -3,9 +3,14 @@ var gulp = require('gulp'),
     zip = require('gulp-zip'),
     del = require('del');
 
-gulp.task('copy', function() {
+gulp.task('copy-src', function() {
   return gulp.src(['./src/**/*'])
-    .pipe(gulp.dest('build/sqweb-sdk-php'));
+    .pipe(gulp.dest('build/sqweb-sdk-php/src'));
+});
+
+gulp.task('copy-extras', function() {
+  return gulp.src(['./README.md', './CHANGELOG.md'])
+    .pipe(gulp.dest('build/sqweb-sdk-php/'));
 });
 
 gulp.task('zip', function() {
@@ -20,4 +25,4 @@ gulp.task('clean', function() {
 
 gulp.task('keep-build', sequence('copy', 'zip'));
 
-gulp.task('default', sequence('copy', 'zip', 'clean'));
+gulp.task('default', sequence('copy-src', 'copy-extras', 'zip', 'clean'));

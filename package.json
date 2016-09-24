@@ -18,9 +18,10 @@
   "homepage": "https://github.com/SQweb-team/SQweb-SDK-PHP#readme",
   "private": true,
   "devDependencies": {
-    "del": "^2.2.1",
-    "gulp-sequence": "^0.4.5",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-sequence": "^0.4.6",
     "gulp-zip": "^3.2.0",
-    "snyk": "^1.17.1"
+    "snyk": "^1.19.1"
   }
 }
