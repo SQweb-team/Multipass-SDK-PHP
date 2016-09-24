@@ -31,7 +31,7 @@ class SQweb
     private $SQW_MESSAGE = '';
 
     /**
-     * @param array $config (optional) with keys matcing the SQW_* class attributes.
+     * @param array $config (optional) with keys matching the SQW_* class attributes.
      */
     public function __construct($config = array())
     {
@@ -102,7 +102,7 @@ class SQweb
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_CONNECTTIMEOUT_MS => 1000,
                     CURLOPT_TIMEOUT_MS => 1000,
-                    CURLOPT_USERAGENT => 'SQweb/SDK 1.2',
+                    CURLOPT_USERAGENT => 'SQweb/SDK 1.3',
                     CURLOPT_POSTFIELDS => array(
                         'token' => $_COOKIE['sqw_z'],
                         'site_id' => $site_id,
@@ -115,9 +115,9 @@ class SQweb
             }
         }
         if ($this->response !== null && $this->response->status === true && $this->response->credit > 0) {
-            return ($this->response->credit);
+            return $this->response->credit;
         }
-        return (0);
+        return 0;
     }
 
     public function script()
@@ -164,10 +164,10 @@ class SQweb
 
     public function transparent($text, $percent = 100)
     {
-        if (self::checkCredits() == 1 || $percent == 100 || empty($text)) {
+        if (self::checkCredits() === 1 || $percent == 100 || empty($text)) {
             return $text;
         }
-        if ($percent == 0) {
+        if ($percent === 0) {
             return '';
         }
         $arr_txt = preg_split('/(<.+?><\/.+?>)|(<.+?>)|( )/', $text, 0, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
@@ -228,13 +228,12 @@ class SQweb
 
     public function waitToDisplay($content, $date, $format, $wait = 0)
     {
-        if ($wait == 0 || self::checkCredits() == 1) {
+        if ($wait === 0 || self::checkCredits() === 1) {
             return $content;
         }
         $datetime1 = new \Datetime;
         $datetime2 = $datetime1->createFromFormat($format, $date);
         $gap = (int)$datetime1->diff($datetime2)->format('%R%a');
-        $result = $gap + $wait;
-        return $result > 0 ? '' : $content;
+        return $gap + $wait > 0 ? '' : $content;
     }
 }
