@@ -25,7 +25,9 @@ If you're using WordPress, we've made it easy for you. Download the SQweb plugin
 2. Create a file named `.env` at the root of your project, or edit it if you already have one.
 3. In `.env`, paste the following configuration and **set the variable `SQW_ID_SITE` with your website ID**:
 ```php
+<?php
 SQW_ID_SITE=YOUR_WEBSITE_ID
+?>
 ```
 For additional settings, see "[Options](#options)" below.
 
@@ -35,15 +37,17 @@ For additional settings, see "[Options](#options)" below.
 2. Create a new SQweb object passing in its configuration through the constructor. **`SQW\_ID\_SITE` must be specified**.
 
 ```php
+<?php
 require_once('vendor/autoload.php');
 $sqweb = new \SQweb\SQweb(['SQW_ID_SITE' => 1234, 'SQW_MESSAGE' => 'Please support my site']);
+?>
 ```
 
 For additional settings, see "[Options](#options)" below.
 
 ###Manually
 
-1. Download the latest release of the SDK [from here](https://github.com/SQweb-team/SQweb-SDK-PHP/releases) and unzip it in a folder named `sqweb` in your project root ;
+1. Download the latest release of the SDK [from here](https://github.com/SQweb-team/SQweb-SDK-PHP/releases) and unzip it in a folder named `sqweb` in your project root.
 2. Create a file named `sqweb_config.php` at the root of your project.
 
 This file should be one level up from the sqweb folder you just created, i.e. :
@@ -59,7 +63,9 @@ This file should be one level up from the sqweb folder you just created, i.e. :
 3. In `sqweb_config.php`, paste the following configuration and **set the variable `SQW_ID_SITE` with your website ID**:
 
 ```php
+<?php
 SQW_ID_SITE=YOUR_WEBSITE_ID
+?>
 ```
 
 For additional settings, see "[Options](#options)" below.
@@ -72,12 +78,16 @@ You have to initialise the SQweb variable on the pages where you need it with th
 
 If you used composer:
 ```php
+<?php
 $sqweb = new SQweb\SQweb;
+?>
 ```
 
 If you installed manually:
 ```php
+<?php
 include_once "whereYouInstalled/src/init.php";
+?>
 ```
 
 ###2. Tagging your pages
@@ -85,7 +95,9 @@ include_once "whereYouInstalled/src/init.php";
 This function outputs the SQweb JavaScript tag. Insert it before the closing `</body>` tag in your HTML.
 
 ```php
+<?php
 $sqweb->script();
+?>
 ```
 
 Make sure it is present on all your pages. Most likely you'll just have to add it to your template.
@@ -99,22 +111,81 @@ This function checks if the user has credits, so that you can disable ads and/or
 You can use it like this :
 
 ```php
+<?php
 if ($sqweb->checkCredits() > 0) {
     //CONTENT
 } else {
     //ADS
 }
+?>
 ```
 
-###4. Showing the SQweb button
+###4. Showing the Multipass button
 
-Finally, use this code to get the SQweb button on your pages:
+Finally, use this code to get the Multipass button on your pages:
 
 ```php
-$sqweb->button('blue');
+<?php
+$sqweb->button();
+?>
 ```
 
-This function takes one optional parameter, the color. You can switch between `blue` (default) and `grey`.
+###5. More functions
+
+1.This function is used to display only a part of your content to non premium users:
+```php
+<?php
+function transparent($your_content, $percent) { ... }
+?>
+```
+`$percent` is the percent of your content you want to display to everyone.
+
+Example:
+```php
+<?php
+echo transparent('one two three four', 50);
+?>
+```
+Will display for free users:
+```
+one two
+```
+
+2.The following function is used to display your content later for non paying users:
+```php
+<?php
+function waitToDisplay($your_content, $publication_date, $date_format, $wait) { ... }
+?>
+```
+`$publication_date` is the date when your content is published on your website.
+`$date_format` is the format of your publication date ('Y-m-d' for '2016-12-18').
+`$wait` is the number of day you want to wait before showing this content to free users.
+
+Example:
+```php
+<?php
+echo waitToDisplay('I will appear for everyone in 2 days', '15/09/16', 'd/m/y', 2);
+?>
+```
+
+3.The next function is used to limit the number of articles free users can read a day:
+```php
+<?php
+function limitArticle($number_of_articles) { ... }
+?>
+```
+`$number_of_articles` is the number of articles a free user can see.
+
+Example if I want to display only 5 articles to free users:
+```php
+<?php
+if (limitArticle(5) == true) {
+	echo "This is my article";
+} else {
+	echo "Sorry, you reached the limit of pages you can see today, come back tomorrow or subscribe to Multipass to get unlimited articles !";
+}
+?>
+```
 
 ##Options
 

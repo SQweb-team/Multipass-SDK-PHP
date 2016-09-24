@@ -1,3 +1,10 @@
+### v1.3 - 2016-09-23
+
+* Added transparent() function to hide a part of your content.
+* Added limitArticle() function to limit the number of articles read a day by free users.
+* Added waitToDisplay() function to make the articles display later for free users.
+* Readme improvements.
+
 ### v1.2 - 2016-06-07
 
 * Improved .env handling.

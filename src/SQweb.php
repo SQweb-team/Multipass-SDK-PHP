@@ -143,10 +143,98 @@ class SQweb
      */
     public function button($color = null)
     {
-        if ('grey' === $color) {
-            echo '<div class="sqweb-button sqweb-grey"></div>';
-        } else {
-            echo '<div class="sqweb-button"></div>';
+        echo '<div class="sqweb-button"></div>';
+    }
+
+    public function sqwBalise($balise, $match)
+    {
+        if (preg_match('/<(\w+)(?(?!.+\/>).*>|$)/', $match, $tmp)) {
+            if (!isset($balise)) {
+                $balise = array();
+            }
+            $balise[] = $tmp[1];
         }
+        foreach ($balise as $key => $value) {
+            if (preg_match('/<\/(.+)>/', $value, $tmp)) {
+                unset($balise[ $key ]);
+            }
+        }
+        return $balise;
+    }
+
+    public function transparent($text, $percent = 100)
+    {
+        if (self::checkCredits() == 1 || $percent == 100 || empty($text)) {
+            return $text;
+        }
+        if ($percent == 0) {
+            return '';
+        }
+        $arr_txt = preg_split('/(<.+?><\/.+?>)|(<.+?>)|( )/', $text, 0, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
+        foreach (array_keys($arr_txt, ' ', true) as $key) {
+            unset($arr_txt[ $key ]);
+        }
+        $arr_txt = array_values($arr_txt);
+        $words = count($arr_txt);
+        $nbr = ceil($words / 100 * $percent);
+        $lambda = (1 / $nbr);
+        $alpha = 1;
+        $begin = 0;
+        $balise = array();
+        while ($begin < $nbr) {
+            if (isset($arr_txt[$begin + 1])) {
+                if (preg_match('/<.+?>/', $arr_txt[ $begin ], $match)) {
+                    $balise = sqwBalise($balise, $match[0]);
+                    $final[] = $arr_txt[ $begin ];
+                    $nbr++;
+                } else {
+                    $tmp = number_format($alpha, 5, '.', '');
+                    $final[] = '<span style="opacity: ' . $tmp . '">' . $arr_txt[ $begin ] . '</span>';
+                    $alpha -= $lambda;
+                }
+            }
+            $begin++;
+        }
+        foreach ($balise as $value) {
+            $final[] = '</' . $value . '>';
+        }
+        $final = implode(' ', $final);
+        return $final;
+    }
+
+    public function limitArticle($limitation = 0)
+    {
+        if (self::checkCredits() == 0 && $limitation != 0) {
+            if (!isset($_COOKIE['sqwBlob']) || (isset($_COOKIE['sqwBlob']) && $_COOKIE['sqwBlob'] != -7610679)) {
+                $ip2 = ip2long($_SERVER['REMOTE_ADDR']);
+                if (!isset($_COOKIE['sqwBlob'])) {
+                    $sqwBlob = 1;
+                } else {
+                    $sqwBlob = ($_COOKIE['sqwBlob'] / 2) - $ip2 - 2 + 1;
+                }
+                if ($limitation > 0 && $sqwBlob <= $limitation) {
+                    $tmp = ($sqwBlob + $ip2 + 2) * 2;
+                    setcookie('sqwBlob', $tmp, time()+60*60*24);
+                    return true;
+                } else {
+                    setcookie('sqwBlob', -7610679, time()+60*60*24);
+                }
+            }
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function waitToDisplay($content, $date, $format, $wait = 0)
+    {
+        if ($wait == 0 || self::checkCredits() == 1) {
+            return $content;
+        }
+        $datetime1 = new \Datetime;
+        $datetime2 = $datetime1->createFromFormat($format, $date);
+        $gap = (int)$datetime1->diff($datetime2)->format('%R%a');
+        $result = $gap + $wait;
+        return $result > 0 ? '' : $content;
     }
 }
