@@ -30,4 +30,6 @@ script:
 
 notifications:
     slack: nwork:g1c5FQpTcE9ZxPTAPdHsUwPr
+        on_success: never
+        on_failure: always
     email: false
