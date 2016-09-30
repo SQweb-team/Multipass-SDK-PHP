@@ -154,7 +154,7 @@ one two
 2.The following function is used to display your content later for non paying users:
 ```php
 <?php
-function waitToDisplay($your_content, $publication_date, $date_format, $wait) { ... }
+function waitToDisplay($publication_date, $date_format, $wait) { ... }
 ?>
 ```
 `$publication_date` is the date when your content is published on your website.
@@ -164,7 +164,11 @@ function waitToDisplay($your_content, $publication_date, $date_format, $wait) { 
 Example:
 ```php
 <?php
-echo waitToDisplay('I will appear for everyone in 2 days', '15/09/16', 'd/m/y', 2);
+if (waitToDisplay('15/09/16', 'd/m/y', 2)) {
+	The content here will appear 2 days after the publication date for non paying users.
+} else {
+	Here you can put content that free users will see before the content above is available for all.
+}
 ?>
 ```
 

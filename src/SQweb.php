@@ -229,11 +229,11 @@ class SQweb
     public function waitToDisplay($content, $date, $format, $wait = 0)
     {
         if ($wait === 0 || self::checkCredits() === 1) {
-            return $content;
+            return true;
         }
         $datetime1 = new \Datetime;
         $datetime2 = $datetime1->createFromFormat($format, $date);
         $gap = (int)$datetime1->diff($datetime2)->format('%R%a');
-        return $gap + $wait > 0 ? '' : $content;
+        return ($gap + $wait) > 0 ? false : true;
     }
 }
