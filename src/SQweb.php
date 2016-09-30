@@ -226,7 +226,7 @@ class SQweb
         }
     }
 
-    public function waitToDisplay($content, $date, $format, $wait = 0)
+    public function waitToDisplay($date, $format, $wait = 0)
     {
         if ($wait === 0 || self::checkCredits() === 1) {
             return true;
