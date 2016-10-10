@@ -125,7 +125,7 @@ $sqweb->button();
 ```php
 /*
  * @param $your_content string The content your want to limit
- * @param $int Percentage of your content your want to display to everyone.
+ * @param $percent int Percentage of your content your want to display to everyone.
  */
 
 function transparent($your_content, $percent) { ... }
@@ -146,8 +146,8 @@ one two
 ```php
 /*
  * @param $publication_date date when your content is published on your website.
- * @param $date_format format of your publication date ('Y-m-d' for '2016-12-18')
- * @param $wait int number of day you want to wait before showing this content to free users
+ * @param $date_format string format of your publication date ('Y-m-d' for '2016-12-18').
+ * @param $wait int number of day you want to wait before showing this content to free users.
  */
 
 function waitToDisplay($publication_date, $date_format, $wait) { ... }
@@ -167,7 +167,7 @@ if (waitToDisplay('15/09/16', 'd/m/y', 2)) {
 
 ```php
 /*
- * @param $number_of_articles int the number of articles a free user can see
+ * @param $number_of_articles int The number of articles a free user can see.
  */
  
 function limitArticle($number_of_articles) { ... }
