@@ -184,7 +184,7 @@ class SQweb
         while ($begin < $nbr) {
             if (isset($arr_txt[$begin + 1])) {
                 if (preg_match('/<.+?>/', $arr_txt[ $begin ], $match)) {
-                    $balise = sqwBalise($balise, $match[0]);
+                    $balise = self::sqwBalise($balise, $match[0]);
                     $final[] = $arr_txt[ $begin ];
                     $nbr++;
                 } else {
