@@ -1,3 +1,7 @@
+### v1.4.2 - 2016-11-01
+
+* Added the option to display a smaller button.
+
 ### v1.4.1 - 2016-10-31
 
 * Updated client script URL (now HTTPS only).

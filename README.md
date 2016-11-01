@@ -121,9 +121,7 @@ $sqweb->button();
 We have a smaller version of the button, to use it, pass the string 'slim' to the function e.g:
 
 ```php
-<?php
 $sqweb->button('slim');
-?>
 ```
 
 ###5. More functions
@@ -177,7 +175,7 @@ if (waitToDisplay('15/09/16', 'd/m/y', 2)) {
 /*
  * @param $number_of_articles int The number of articles a free user can see.
  */
- 
+
 function limitArticle($number_of_articles) { ... }
 ```
 
