@@ -133,7 +133,7 @@ class SQweb
                 msg: "'. $this->SQW_MESSAGE .'"};
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "//cdn.sqweb.com/sqweb-beta.js";
+        script.src = "https://cdn.sqweb.com/sqweb.js";
         document.getElementsByTagName("head")[0].appendChild(script);</script>';
     }
 
@@ -188,7 +188,7 @@ class SQweb
         while ($begin < $nbr) {
             if (isset($arr_txt[$begin + 1])) {
                 if (preg_match('/<.+?>/', $arr_txt[ $begin ], $match)) {
-                    $balise = sqwBalise($balise, $match[0]);
+                    $balise = self::sqwBalise($balise, $match[0]);
                     $final[] = $arr_txt[ $begin ];
                     $nbr++;
                 } else {

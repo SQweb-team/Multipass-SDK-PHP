@@ -1,3 +1,11 @@
+### v1.4.1 - 2016-10-31
+
+* Updated client script URL (now HTTPS only).
+
+### v1.4 - 2016-10-11
+
+* Fix bad call to sqwBalise
+
 ### v1.3 - 2016-09-23
 
 * Added transparent() function to hide a part of your content.

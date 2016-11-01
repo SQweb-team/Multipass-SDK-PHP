@@ -1,33 +1,31 @@
 language:
-    - php
-
+- php
 php:
-    - 5.5
-    - 5.6
-    - 7.0
-    - hhvm
-
+- 5.5
+- 5.6
+- 7.0
+- hhvm
 matrix:
-    allow_failures:
-        - php: hhvm
-
+  allow_failures:
+  - php: hhvm
 cache:
-    directories:
-        - vendor
-
+  directories:
+  - vendor
 before_script:
-    - composer self-update
-    - composer install --ignore-platform-reqs
-    - phpenv rehash
-    - vendor/bin/phpcs -i
-    - nvm install 0.12
-    - npm install
-
+- composer self-update
+- composer install --ignore-platform-reqs
+- phpenv rehash
+- vendor/bin/phpcs -i
+- nvm install 0.12
+- npm install
 script:
-    - vendor/bin/phpcs --standard=PSR2 src/ --extensions=php
-    - vendor/bin/phpcpd src/
-    - snyk test
-
+- vendor/bin/phpcs --standard=PSR2 src/ --extensions=php
+- vendor/bin/phpcpd src/
+- snyk test
 notifications:
-    slack: nwork:g1c5FQpTcE9ZxPTAPdHsUwPr
-    email: false
+  slack:
+    on_success: never
+    on_failure: always
+    rooms:
+      secure: A381N5xjkoIugDOmoZoxaCCynOCF11Xz4Sh6w8CFHrpJ2Z53zlUnOIa+rYrMKNlKzQYz3uUDqlzrHlct6h9DlEBdanB/Ez6rg61scSThciPTqDyS5LrtdZhH6/VIgOLgyaSkEDSfnnrXc+A2zfLTFDQgEx3BOfWReqXT4tlcMy5QXKGVj3lg4Kj4Q/cnosW8mb9LojffKILDN8o61EF46YSVOvkmbszCkel2ZAjkeKXoc+uR+qIFx1YNxbGwb/q+dynDFMkqhr323KaigkgBhisn7pDtTIYaAikwGScjsvfsBjfrMQUuCbWoXXQKO8u3uMsz3QLJBXg4brFhPLl0pW9u8KaZ2hb5d3cayXom9mCH1Lr8WIkw9tj+L0Aa18iC65Gl6R6ZlVEmkCT4cj9dNEN+oOKP2PDyUEgxSoY0bGabYmP07hc4TvKs3PA87ZMu3YCZkI7bLae32ZEMKban/ZeW/QVE1CBYzUTaUesfeMCDEaXYFQwpqcL+9G30wgV+twf0s1ywtvqcn2JatTd69RCgacJ6OeVM77TkiImv0bl0sya/soVIWwSSoGl7eq+in//n6BbAdAQtT6lW2xQWd3fxd6szOEH6cyhtjtkSw1CV+fGT4pE7000dwxQbZTk5GARdrou2MkotrMUm6MHPUW7xb57+a3kMtl+VgmhoLvA=
+  email: false
