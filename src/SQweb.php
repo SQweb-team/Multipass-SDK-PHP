@@ -139,11 +139,15 @@ class SQweb
 
     /**
      * Create the target button div.
-     * @param null $color
+     * @param null $size
      */
-    public function button($color = null)
+    public function button($size = null)
     {
-        echo '<div class="sqweb-button"></div>';
+        if ($size == 'slim') {
+            echo '<div class="sqweb-button multipass-slim"></div>';
+        } else {
+            echo '<div class="sqweb-button"></div>';
+        }
     }
 
     public function sqwBalise($balise, $match)

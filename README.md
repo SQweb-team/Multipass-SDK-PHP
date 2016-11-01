@@ -130,6 +130,14 @@ $sqweb->button();
 ?>
 ```
 
+We have a smaller version of the button, to use it, pass the string 'slim' to the function e.g:
+
+```php
+<?php
+$sqweb->button('slim');
+?>
+```
+
 ###5. More functions
 
 1.This function is used to display only a part of your content to non premium users:
