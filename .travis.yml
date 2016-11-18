@@ -19,6 +19,7 @@ before_script:
 - nvm install 0.12
 - npm install
 script:
+- vendor/bin/parallel-lint src
 - vendor/bin/phpcs --standard=PSR2 src/ --extensions=php
 - vendor/bin/phpcpd src/
 - snyk test
