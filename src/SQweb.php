@@ -28,6 +28,7 @@ class SQweb
     private $SQW_BEACON = 'false';
     private $SQW_DWIDE = 'false';
     private $SQW_LANG = 'en';
+    private $SQW_SITENAME = '';
     private $SQW_MESSAGE = '';
 
     /**
@@ -43,7 +44,7 @@ class SQweb
         // Pass in an array
         $config_keys = [
             'SQW_ID_SITE',
-            'SQW_SITENAME'
+            'SQW_SITENAME',
             'SQW_DEBUG',
             'SQW_TARGETING',
             'SQW_BEACON',
@@ -175,6 +176,13 @@ class SQweb
         return $balise;
     }
 
+    /**
+     * Put opacity to your text
+     * Returns the text with opcaity style.
+     * @param text, which is your text.
+     * @param int percent which is the percent of your text you want to show.
+     * @return string
+     */
     public function transparent($text, $percent = 100)
     {
         if (self::checkCredits() === 1 || $percent == 100 || empty($text)) {

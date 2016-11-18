@@ -23,24 +23,21 @@ If you're using WordPress, we've made it easy for you. Download the SQweb plugin
 
 1. In your project root, execute `composer require sqweb/sdk_php` ;
 2. Create a file named `.env` at the root of your project, or edit it if you already have one.
-3. In `.env`, paste the following configuration and **set the variable `SQW_ID_SITE` with your website ID**:
+3. In `.env`, paste the following configuration and **set the variable `SQW_ID_SITE` with your website ID and the variable `SQW_SITENAME` with the name you want to show on the multipass large button**:
 ```php
-<?php
 SQW_ID_SITE=YOUR_WEBSITE_ID
-?>
+SQW_SITENAME=YOUR_WEBSITE_NAME
 ```
 For additional settings, see "[Options](#options)" below.
 
 ###Using Composer and manual
 
 1. `composer require sqweb/sdk_php`
-2. Create a new SQweb object passing in its configuration through the constructor. **`SQW\_ID\_SITE` must be specified**.
+2. Create a new SQweb object passing in its configuration through the constructor. **`SQW_ID_SITE` and `SQW_SITENAME` must be specified**.
 
 ```php
-<?php
 require_once('vendor/autoload.php');
-$sqweb = new \SQweb\SQweb(['SQW_ID_SITE' => 1234, 'SQW_MESSAGE' => 'Please support my site']);
-?>
+$sqweb = new \SQweb\SQweb(['SQW_ID_SITE' => 1234, 'SQW_SITENAME' => 'SQweb']);
 ```
 
 For additional settings, see "[Options](#options)" below.
@@ -60,12 +57,11 @@ This file should be one level up from the sqweb folder you just created, i.e. :
 |-- sqweb_config.php
 ```
 
-3. In `sqweb_config.php`, paste the following configuration and **set the variable `SQW_ID_SITE` with your website ID**:
+3. In `sqweb_config.php`, paste the following configuration and **set the variable `SQW_ID_SITE` with your website ID and the variable `SQW_SITENAME` with the name you want to show on the multipass large button**:
 
 ```php
-<?php
 SQW_ID_SITE=YOUR_WEBSITE_ID
-?>
+SQW_SITENAME=YOUR_WEBSITE_NAME
 ```
 
 For additional settings, see "[Options](#options)" below.
@@ -118,10 +114,14 @@ Use this code to display the Multipass button on your pages:
 $sqweb->button();
 ```
 
-We have a smaller version of the button, to use it, pass the string 'slim' to the function e.g:
+We have 3 additionals size for the button, to use it, pass a string to the function e.g:
 
 ```php
+$sqweb->button('tiny');
+OR
 $sqweb->button('slim');
+OR
+$sqweb->button('large');
 ```
 
 ###5. More functions
@@ -129,12 +129,15 @@ $sqweb->button('slim');
 #### Display only a part of your content to non premium users
 
 ```php
-/*
- * @param $your_content string The content your want to limit
- * @param $percent int Percentage of your content your want to display to everyone.
+/**
+ * Put opacity to your text
+ * Returns the text with opcaity style.
+ * @param text, which is the text you want to limit.
+ * @param int percent which is the percent of your text you want to show.
+ * @return string
  */
 
-function transparent($your_content, $percent) { ... }
+function transparent($text, $percent = 100) { ... }
 ```
 
 Example:
@@ -151,12 +154,12 @@ one two
 
 ```php
 /*
- * @param $publication_date date when your content is published on your website.
- * @param $date_format string format of your publication date ('Y-m-d' for '2016-12-18').
- * @param $wait int number of day you want to wait before showing this content to free users.
+ * @param $date is the date when your content is published on your website.
+ * @param $format is the format of your publication date ('Y-m-d' for '2016-12-18').
+ * @param $wait int is the number of day you want to wait before showing this content to free users.
  */
 
-function waitToDisplay($publication_date, $date_format, $wait) { ... }
+function waitToDisplay($date, $format, $wait = 0) { ... }
 ```
 
 Example:
@@ -173,10 +176,10 @@ if (waitToDisplay('15/09/16', 'd/m/y', 2)) {
 
 ```php
 /*
- * @param $number_of_articles int The number of articles a free user can see.
+ * @param $limitation int is the number of articles a free user can see.
  */
 
-function limitArticle($number_of_articles) { ... }
+function limitArticle($limitation = 0) { ... }
 ```
 
 For instance, if I want to display only 5 articles to free users:
@@ -195,6 +198,7 @@ Unless otherwise noted, these options default to `false`. You can set them in yo
 
 |Option|Description
 |---|---|
+|`SQW_SITENAME`|The name that will appear on the large version of our button. You must set this variable.|
 |`SQW_MESSAGE`|A custom message that will be shown to your adblockers. If using quotes, you must escape them.|
 |`SQW_TARGETING`|Only show the button to detected adblockers. Cannot be combined with the `beacon` mode.|
 |`SQW_BEACON`|Monitor adblocking rates quietly, without showing a SQweb button or banner to the end users.|
