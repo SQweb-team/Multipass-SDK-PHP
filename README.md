@@ -131,9 +131,9 @@ $sqweb->button('large');
 ```php
 /**
  * Put opacity to your text
- * Returns the text with opcaity style.
- * @param text, which is the text you want to limit.
- * @param int percent which is the percent of your text you want to show.
+ * Returns text  with opcaity style.
+ * @param $text  Text you want to limit.
+ * @param int $percent Percent of your text you want to show.
  * @return string
  */
 
@@ -154,12 +154,11 @@ one two
 
 ```php
 /*
- * @param $date is the date when your content is published on your website.
- * @param $format is the format of your publication date ('Y-m-d' for '2016-12-18').
- * @param $wait int is the number of day you want to wait before showing this content to free users.
+ * @param string $date  When to publish the content on your site. It must be an ISO format(YYYY-MM-DD).
+ * @param int $wait  Number of days you want to wait before showing this content to free users.
  */
 
-function waitToDisplay($date, $format, $wait = 0) { ... }
+function waitToDisplay($date, $wait = 0) { ... }
 ```
 
 Example:
@@ -176,7 +175,7 @@ if (waitToDisplay('15/09/16', 'd/m/y', 2)) {
 
 ```php
 /*
- * @param $limitation int is the number of articles a free user can see.
+ * @param int $limitation  Number of articles a free user can see.
  */
 
 function limitArticle($limitation = 0) { ... }
