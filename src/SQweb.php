@@ -43,7 +43,7 @@ class SQweb
         // Pass in an array
         $config_keys = [
             'SQW_ID_SITE',
-            'SQW_SITENAME'
+            'SQW_SITENAME',
             'SQW_DEBUG',
             'SQW_TARGETING',
             'SQW_BEACON',
