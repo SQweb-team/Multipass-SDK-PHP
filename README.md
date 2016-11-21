@@ -202,6 +202,9 @@ Unless otherwise noted, these options default to `false`. You can set them in yo
 |`SQW_DWIDE`|Set to `false` to only enable SQweb on the current domain. Defaults to `true`.|
 |`SQW_LANG`|You may pick between `en` and `fr`.|
 
+##Known Issues
+
+If you change the value of `SQW_DWIDE` after initial deployment, your users will have to log in again since their auth cookie will no longer be valid.
 
 ##Contributing
 
