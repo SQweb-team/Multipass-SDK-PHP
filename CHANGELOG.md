@@ -1,3 +1,9 @@
+### v1.5.0 - 2016-11-18
+
+* Added 'tiny' and 'large' options to display the Multipass button.
+* Added the necessary variable: SQW_SITENAME to our configuration file.
+* Normalized variables names with our other SDK.
+
 ### v1.4.2 - 2016-11-01
 
 * Added the option to display a smaller button.

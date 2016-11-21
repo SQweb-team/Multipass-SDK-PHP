@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SQweb PHP SDK
  * @link https://github.com/SQweb-team/SQweb-SDK-PHP
@@ -28,6 +29,7 @@ class SQweb
     private $SQW_BEACON = 'false';
     private $SQW_DWIDE = 'false';
     private $SQW_LANG = 'en';
+    private $SQW_SITENAME = '';
     private $SQW_MESSAGE = '';
 
     /**
@@ -175,6 +177,13 @@ class SQweb
         return $balise;
     }
 
+    /**
+     * Put opacity to your text
+     * Returns the text with opcaity style.
+     * @param text, which is your text.
+     * @param int percent which is the percent of your text you want to show.
+     * @return string
+     */
     public function transparent($text, $percent = 100)
     {
         if (self::checkCredits() === 1 || $percent == 100 || empty($text)) {
@@ -246,16 +255,16 @@ class SQweb
 
     /**
      * Display your premium content at a later date to non-paying users.
-     * @param  string  $date    When to publish the content on your site.
-     * @param  string  $format  Format of your publication date ('Y-m-d' for '2016-12-18').
-     * @param  integer $wait    Days to wait before showing this content to free users.
+     * @param  string  $date  When to publish the content on your site. It must be an ISO format(YYYY-MM-DD).
+     * @param  integer $wait  Days to wait before showing this content to free users.
      * @return bool
      */
-    public function waitToDisplay($date, $format, $wait = 0)
+    public function waitToDisplay($date, $wait = 0)
     {
         if ($wait === 0 || self::checkCredits() === 1) {
             return true;
         }
+        $format = 'Y-m-d';
         $datetime1 = new \Datetime;
         $datetime2 = $datetime1->createFromFormat($format, $date);
         $gap = (int)$datetime1->diff($datetime2)->format('%R%a');
