@@ -1,3 +1,10 @@
+### v1.5.0 - 2016-11-18
+
+* Added `tiny` and `large` options for the Multipass button.
+* Introduced `SQW_SITENAME` variable in our configuration file.
+* Normalized variables names with our other SDKs.
+* Leaner build system (replaced `gulp` with a shell script).
+
 ### v1.4.2 - 2016-11-01
 
 * Added the option to display a smaller button.
@@ -12,20 +19,20 @@
 
 ### v1.3 - 2016-09-23
 
-* Added transparent() function to hide a part of your content.
-* Added limitArticle() function to limit the number of articles read a day by free users.
-* Added waitToDisplay() function to make the articles display later for free users.
+* Added `transparent()` function to hide a part of your content.
+* Added `limitArticle()` function to limit the number of articles read a day by free users.
+* Added `waitToDisplay()` function to make the articles display later for free users.
 * Readme improvements.
 
 ### v1.2 - 2016-06-07
 
-* Improved .env handling.
+* Improved `.env` handling.
 * Added configuration via array.
 
 ### v1.1 - 2016-05-24
 
 * Introduced autoloader support via Composer.
-* Introduced .env configuration.
+* Introduced `.env` configuration.
 * Simplified manual installation.
 
 ### v1.0.4 - 2015-12-04

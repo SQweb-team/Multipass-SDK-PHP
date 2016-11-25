@@ -18,6 +18,11 @@
             "role": "Developer"
         },
         {
+            "name": "Nicolas Verdonck",
+            "email": "nicolas@sqweb.com",
+            "role": "Developer"
+        },
+        {
             "name": "David Goodwin",
             "email": "david@palepurple.co.uk",
             "role": "Developer"
@@ -25,13 +30,14 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": ">= 5.2.0",
+        "php": ">= 5.4.45",
         "vlucas/phpdotenv": "^2.2",
         "ext-curl": "*"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^2.4",
-        "sebastian/phpcpd": "^2.0"
+        "sebastian/phpcpd": "^2.0",
+        "jakub-onderka/php-parallel-lint": "dev-master"
     },
     "autoload": {
         "psr-4": {

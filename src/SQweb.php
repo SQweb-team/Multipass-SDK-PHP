@@ -1,4 +1,5 @@
 <?php
+
 /*
  * SQweb PHP SDK
  * @link https://github.com/SQweb-team/SQweb-SDK-PHP
@@ -28,6 +29,7 @@ class SQweb
     private $SQW_BEACON = 'false';
     private $SQW_DWIDE = 'false';
     private $SQW_LANG = 'en';
+    private $SQW_SITENAME = '';
     private $SQW_MESSAGE = '';
 
     /**
@@ -43,6 +45,7 @@ class SQweb
         // Pass in an array
         $config_keys = [
             'SQW_ID_SITE',
+            'SQW_SITENAME',
             'SQW_DEBUG',
             'SQW_TARGETING',
             'SQW_BEACON',
@@ -102,7 +105,7 @@ class SQweb
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_CONNECTTIMEOUT_MS => 1000,
                     CURLOPT_TIMEOUT_MS => 1000,
-                    CURLOPT_USERAGENT => 'SQweb/SDK 1.3',
+                    CURLOPT_USERAGENT => 'SQweb/SDK 1.5',
                     CURLOPT_POSTFIELDS => array(
                         'token' => $_COOKIE['sqw_z'],
                         'site_id' => $site_id,
@@ -120,11 +123,15 @@ class SQweb
         return 0;
     }
 
+    /**
+     * Output the JavaScript tag with its configuration object.
+     */
     public function script()
     {
         echo '<script>
             var _sqw = {
                 id_site: '. $this->SQW_ID_SITE .',
+                sitename: '. $this->SQW_SITENAME .',
                 debug: '. $this->SQW_DEBUG .',
                 targeting: '. $this->SQW_TARGETING .',
                 beacon: '. $this->SQW_BEACON .',
@@ -143,9 +150,13 @@ class SQweb
      */
     public function button($size = null)
     {
-        if ($size == 'slim') {
+        if ($size === 'tiny') {
+            echo '<div class="sqweb-button multipass-tiny"></div>';
+        } elseif ($size === 'slim') {
             echo '<div class="sqweb-button multipass-slim"></div>';
-        } else {
+        } elseif ($size === 'large') {
+            echo '<div class="sqweb-button multipass-large"></div>';
+        } else { // multipass-regular
             echo '<div class="sqweb-button"></div>';
         }
     }
@@ -166,6 +177,13 @@ class SQweb
         return $balise;
     }
 
+    /**
+     * Put opacity to your text
+     * Returns the text with opcaity style.
+     * @param text, which is your text.
+     * @param int percent which is the percent of your text you want to show.
+     * @return string
+     */
     public function transparent($text, $percent = 100)
     {
         if (self::checkCredits() === 1 || $percent == 100 || empty($text)) {
@@ -181,7 +199,7 @@ class SQweb
         $arr_txt = array_values($arr_txt);
         $words = count($arr_txt);
         $nbr = ceil($words / 100 * $percent);
-        $lambda = (1 / $nbr);
+        $lambda = 1 / $nbr;
         $alpha = 1;
         $begin = 0;
         $balise = array();
@@ -206,6 +224,12 @@ class SQweb
         return $final;
     }
 
+
+    /**
+     * Limit the number of articles free users can read per day.
+     * @param $limitation int The number of articles a free user can see.
+     * @return bool
+     */
     public function limitArticle($limitation = 0)
     {
         if (self::checkCredits() == 0 && $limitation != 0) {
@@ -225,16 +249,22 @@ class SQweb
                 }
             }
             return false;
-        } else {
-            return true;
         }
+        return true;
     }
 
-    public function waitToDisplay($date, $format, $wait = 0)
+    /**
+     * Display your premium content at a later date to non-paying users.
+     * @param  string  $date  When to publish the content on your site. It must be an ISO format(YYYY-MM-DD).
+     * @param  integer $wait  Days to wait before showing this content to free users.
+     * @return bool
+     */
+    public function waitToDisplay($date, $wait = 0)
     {
         if ($wait === 0 || self::checkCredits() === 1) {
             return true;
         }
+        $format = 'Y-m-d';
         $datetime1 = new \Datetime;
         $datetime2 = $datetime1->createFromFormat($format, $date);
         $gap = (int)$datetime1->diff($datetime2)->format('%R%a');

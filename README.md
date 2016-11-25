@@ -2,9 +2,7 @@ SQweb - PHP SDK
 ===
 
 [![Build Status](https://travis-ci.org/SQweb-team/SQweb-SDK-PHP.svg?branch=master)](https://travis-ci.org/SQweb-team/SQweb-SDK-PHP)
-[![Code Climate](https://codeclimate.com/github/SQweb-team/SQweb-SDK-PHP/badges/gpa.svg)](https://codeclimate.com/github/SQweb-team/SQweb-SDK-PHP)
 [![Latest Stable Version](https://poser.pugx.org/sqweb/sdk_php/v/stable)](https://packagist.org/packages/sqweb/sdk_php)
-[![License](https://poser.pugx.org/sqweb/sdk_php/license)](https://packagist.org/packages/sqweb/sdk_php)
 [![Dependency Status](https://www.versioneye.com/user/projects/5650b42bff016c002c00056f/badge.svg)](https://www.versioneye.com/user/projects/5650b42bff016c002c00056f)
 
 ##Requirements
@@ -17,56 +15,54 @@ We are unable to provide official support for earlier versions. For more informa
 
 **This package is intended for custom PHP websites and advanced integrations.**
 
-If you're using WordPress, we've made it easy for you. Download the SQweb plugin [directly from WordPress.org](https://wordpress.org/plugins/sqweb/), or check out the source [here](https://github.com/SQweb-team/SQweb-WordPress-Plugin).
+If you're using WordPress, we've made it easy for you. Download the SQweb plugin [directly from WordPress.org](https://wordpress.org/plugins/sqweb/), or [check out the source](https://github.com/SQweb-team/SQweb-WordPress-Plugin).
 
-###Using Composer and dotenv (Recommended)
+###Recommended : Composer + dotenv
 
-1. In your project root, execute `composer require sqweb/sdk_php` ;
-2. Create a file named `.env` at the root of your project, or edit it if you already have one.
-3. In `.env`, paste the following configuration and **set the variable `SQW_ID_SITE` with your website ID**:
-```php
-<?php
-SQW_ID_SITE=YOUR_WEBSITE_ID
-?>
-```
+1. In your project root, execute `composer require sqweb/sdk_php`.
+2. Create a `.env` file at the root of your project, or edit it if you already have one.
+3. In `.env`, paste the following configuration:
+
+	```php
+	SQW_ID_SITE=YOUR_WEBSITE_ID
+	SQW_SITENAME=YOUR_WEBSITE_NAME
+	```
+	**Change `SQW_ID_SITE` with your website ID and `SQW_SITENAME` with the name to show on the large Multipass button**.
+
 For additional settings, see "[Options](#options)" below.
 
-###Using Composer and manual
+###Composer + Manual Configuration
 
-1. `composer require sqweb/sdk_php`
-2. Create a new SQweb object passing in its configuration through the constructor. **`SQW\_ID\_SITE` must be specified**.
+1. In your project root, execute `composer require sqweb/sdk_php`.
+2. Create a new SQweb object passing in its configuration through the constructor. **`SQW_ID_SITE` and `SQW_SITENAME` must be specified**.
 
-```php
-<?php
-require_once('vendor/autoload.php');
-$sqweb = new \SQweb\SQweb(['SQW_ID_SITE' => 1234, 'SQW_MESSAGE' => 'Please support my site']);
-?>
-```
+	```php
+	require_once('vendor/autoload.php');
+	$sqweb = new \SQweb\SQweb(['SQW_ID_SITE' => 1234, 'SQW_SITENAME' => 'SQweb']);
+	```
 
 For additional settings, see "[Options](#options)" below.
 
 ###Manually
 
-1. Download the latest release of the SDK [from here](https://github.com/SQweb-team/SQweb-SDK-PHP/releases) and unzip it in a folder named `sqweb` in your project root.
-2. Create a file named `sqweb_config.php` at the root of your project.
+1. Download [the latest release](https://github.com/SQweb-team/SQweb-SDK-PHP/releases) of the SDK and unzip it in a folder named `sqweb` in your project root.
+2. Create a file named `sqweb_config.php` at the root of your project. This file should be one level up from the sqweb folder you just created, i.e. :
 
-This file should be one level up from the sqweb folder you just created, i.e. :
+	```
+	|–- sqweb/
+	|	|-- src/
+	|	|	|-- init.php
+	|	|	|-- SQweb.php
+	|-- sqweb_config.php
+	```
 
-```
-|–- sqweb/
-|	|-- src/
-|	|	|-- init.php
-|	|	|-- SQweb.php
-|-- sqweb_config.php
-```
+3. In `sqweb_config.php`, paste the following configuration:
 
-3. In `sqweb_config.php`, paste the following configuration and **set the variable `SQW_ID_SITE` with your website ID**:
-
-```php
-<?php
-SQW_ID_SITE=YOUR_WEBSITE_ID
-?>
-```
+	```php
+	SQW_ID_SITE=YOUR_WEBSITE_ID
+	SQW_SITENAME=YOUR_WEBSITE_NAME
+	```
+	**Change `SQW_ID_SITE` with your website ID and `SQW_SITENAME` with the name to show on the large Multipass button**.
 
 For additional settings, see "[Options](#options)" below.
 
@@ -118,10 +114,12 @@ Use this code to display the Multipass button on your pages:
 $sqweb->button();
 ```
 
-We have a smaller version of the button, to use it, pass the string 'slim' to the function e.g:
+We have 3 additionals sizes for the button, to use it, pass a string to the function:
 
 ```php
+$sqweb->button('tiny');
 $sqweb->button('slim');
+$sqweb->button('large');
 ```
 
 ###5. More functions
@@ -129,20 +127,25 @@ $sqweb->button('slim');
 #### Display only a part of your content to non premium users
 
 ```php
-/*
- * @param $your_content string The content your want to limit
- * @param $percent int Percentage of your content your want to display to everyone.
+/**
+ * Put opacity to your text
+ * Returns text  with opacity style.
+ * @param $text  Text you want to limit.
+ * @param int $percent Percent of your text you want to show.
+ * @return string
  */
 
-function transparent($your_content, $percent) { ... }
+function transparent($text, $percent = 100) { ... }
 ```
 
-Example:
+For instance:
 
 ```php
 echo transparent('one two three four', 50);
 ```
+
 Will display for free users:
+
 ```
 one two
 ```
@@ -151,12 +154,11 @@ one two
 
 ```php
 /*
- * @param $publication_date date when your content is published on your website.
- * @param $date_format string format of your publication date ('Y-m-d' for '2016-12-18').
- * @param $wait int number of day you want to wait before showing this content to free users.
+ * @param string $date  When to publish the content on your site. It must be an ISO format(YYYY-MM-DD).
+ * @param int $wait  Number of days you want to wait before showing this content to free users.
  */
 
-function waitToDisplay($publication_date, $date_format, $wait) { ... }
+function waitToDisplay($date, $wait = 0) { ... }
 ```
 
 Example:
@@ -173,10 +175,10 @@ if (waitToDisplay('15/09/16', 'd/m/y', 2)) {
 
 ```php
 /*
- * @param $number_of_articles int The number of articles a free user can see.
+ * @param int $limitation  Number of articles a free user can see.
  */
 
-function limitArticle($number_of_articles) { ... }
+function limitArticle($limitation = 0) { ... }
 ```
 
 For instance, if I want to display only 5 articles to free users:
@@ -202,6 +204,9 @@ Unless otherwise noted, these options default to `false`. You can set them in yo
 |`SQW_DWIDE`|Set to `false` to only enable SQweb on the current domain. Defaults to `true`.|
 |`SQW_LANG`|You may pick between `en` and `fr`.|
 
+##Known Issues
+
+If you change the value of `SQW_DWIDE` after initial deployment, your users will have to log in again since their auth cookie will no longer be valid.
 
 ##Contributing
 
@@ -213,9 +218,7 @@ All PHP code must conform to the [PSR2 Standard](http://www.php-fig.org/psr/psr-
 
 ###Builds and Releases
 
-Releases are handled with `gulp`. To package a release of the SDK, simply execute `gulp`. This will prepare a zip for you in `dist/`.
-
-By default, the `build/` folder is automatically removed. If you want to keep it, say for debugging, you can package the SDK using `gulp keep-build`.
+See [RELEASE.md](RELEASE.md).
 
 ##Bugs and Security Vulnerabilities
 
@@ -225,7 +228,7 @@ If you discover a security vulnerability within SQweb or this plugin, please sen
 
 ##License
 
-Copyright (C) 2015 – SQweb
+Copyright (C) 2015-2016 – SQweb
 
 This program is free software ; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation ; either version 3 of the License, or (at your option) any later version.
 
