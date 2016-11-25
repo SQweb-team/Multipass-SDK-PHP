@@ -2,9 +2,7 @@ SQweb - PHP SDK
 ===
 
 [![Build Status](https://travis-ci.org/SQweb-team/SQweb-SDK-PHP.svg?branch=master)](https://travis-ci.org/SQweb-team/SQweb-SDK-PHP)
-[![Code Climate](https://codeclimate.com/github/SQweb-team/SQweb-SDK-PHP/badges/gpa.svg)](https://codeclimate.com/github/SQweb-team/SQweb-SDK-PHP)
 [![Latest Stable Version](https://poser.pugx.org/sqweb/sdk_php/v/stable)](https://packagist.org/packages/sqweb/sdk_php)
-[![License](https://poser.pugx.org/sqweb/sdk_php/license)](https://packagist.org/packages/sqweb/sdk_php)
 [![Dependency Status](https://www.versioneye.com/user/projects/5650b42bff016c002c00056f/badge.svg)](https://www.versioneye.com/user/projects/5650b42bff016c002c00056f)
 
 ##Requirements
@@ -17,52 +15,54 @@ We are unable to provide official support for earlier versions. For more informa
 
 **This package is intended for custom PHP websites and advanced integrations.**
 
-If you're using WordPress, we've made it easy for you. Download the SQweb plugin [directly from WordPress.org](https://wordpress.org/plugins/sqweb/), or check out the source [here](https://github.com/SQweb-team/SQweb-WordPress-Plugin).
+If you're using WordPress, we've made it easy for you. Download the SQweb plugin [directly from WordPress.org](https://wordpress.org/plugins/sqweb/), or [check out the source](https://github.com/SQweb-team/SQweb-WordPress-Plugin).
 
-###Using Composer and dotenv (Recommended)
+###Recommended : Composer + dotenv
 
-1. In your project root, execute `composer require sqweb/sdk_php` ;
-2. Create a file named `.env` at the root of your project, or edit it if you already have one.
-3. In `.env`, paste the following configuration and **set the variable `SQW_ID_SITE` with your website ID and the variable `SQW_SITENAME` with the name you want to show on the multipass large button**:
-```php
-SQW_ID_SITE=YOUR_WEBSITE_ID
-SQW_SITENAME=YOUR_WEBSITE_NAME
-```
+1. In your project root, execute `composer require sqweb/sdk_php`.
+2. Create a `.env` file at the root of your project, or edit it if you already have one.
+3. In `.env`, paste the following configuration:
+
+	```php
+	SQW_ID_SITE=YOUR_WEBSITE_ID
+	SQW_SITENAME=YOUR_WEBSITE_NAME
+	```
+	**Change `SQW_ID_SITE` with your website ID and `SQW_SITENAME` with the name to show on the large Multipass button**.
+
 For additional settings, see "[Options](#options)" below.
 
-###Using Composer and manual
+###Composer + Manual Configuration
 
-1. `composer require sqweb/sdk_php`
+1. In your project root, execute `composer require sqweb/sdk_php`.
 2. Create a new SQweb object passing in its configuration through the constructor. **`SQW_ID_SITE` and `SQW_SITENAME` must be specified**.
 
-```php
-require_once('vendor/autoload.php');
-$sqweb = new \SQweb\SQweb(['SQW_ID_SITE' => 1234, 'SQW_SITENAME' => 'SQweb']);
-```
+	```php
+	require_once('vendor/autoload.php');
+	$sqweb = new \SQweb\SQweb(['SQW_ID_SITE' => 1234, 'SQW_SITENAME' => 'SQweb']);
+	```
 
 For additional settings, see "[Options](#options)" below.
 
 ###Manually
 
-1. Download the latest release of the SDK [from here](https://github.com/SQweb-team/SQweb-SDK-PHP/releases) and unzip it in a folder named `sqweb` in your project root.
-2. Create a file named `sqweb_config.php` at the root of your project.
+1. Download [the latest release](https://github.com/SQweb-team/SQweb-SDK-PHP/releases) of the SDK and unzip it in a folder named `sqweb` in your project root.
+2. Create a file named `sqweb_config.php` at the root of your project. This file should be one level up from the sqweb folder you just created, i.e. :
 
-This file should be one level up from the sqweb folder you just created, i.e. :
+	```
+	|–- sqweb/
+	|	|-- src/
+	|	|	|-- init.php
+	|	|	|-- SQweb.php
+	|-- sqweb_config.php
+	```
 
-```
-|–- sqweb/
-|	|-- src/
-|	|	|-- init.php
-|	|	|-- SQweb.php
-|-- sqweb_config.php
-```
+3. In `sqweb_config.php`, paste the following configuration:
 
-3. In `sqweb_config.php`, paste the following configuration and **set the variable `SQW_ID_SITE` with your website ID and the variable `SQW_SITENAME` with the name you want to show on the multipass large button**:
-
-```php
-SQW_ID_SITE=YOUR_WEBSITE_ID
-SQW_SITENAME=YOUR_WEBSITE_NAME
-```
+	```php
+	SQW_ID_SITE=YOUR_WEBSITE_ID
+	SQW_SITENAME=YOUR_WEBSITE_NAME
+	```
+	**Change `SQW_ID_SITE` with your website ID and `SQW_SITENAME` with the name to show on the large Multipass button**.
 
 For additional settings, see "[Options](#options)" below.
 
@@ -114,13 +114,11 @@ Use this code to display the Multipass button on your pages:
 $sqweb->button();
 ```
 
-We have 3 additionals size for the button, to use it, pass a string to the function e.g:
+We have 3 additionals sizes for the button, to use it, pass a string to the function:
 
 ```php
 $sqweb->button('tiny');
-OR
 $sqweb->button('slim');
-OR
 $sqweb->button('large');
 ```
 
@@ -131,7 +129,7 @@ $sqweb->button('large');
 ```php
 /**
  * Put opacity to your text
- * Returns text  with opcaity style.
+ * Returns text  with opacity style.
  * @param $text  Text you want to limit.
  * @param int $percent Percent of your text you want to show.
  * @return string
@@ -140,12 +138,14 @@ $sqweb->button('large');
 function transparent($text, $percent = 100) { ... }
 ```
 
-Example:
+For instance:
 
 ```php
 echo transparent('one two three four', 50);
 ```
+
 Will display for free users:
+
 ```
 one two
 ```
@@ -197,7 +197,6 @@ Unless otherwise noted, these options default to `false`. You can set them in yo
 
 |Option|Description
 |---|---|
-|`SQW_SITENAME`|The name that will appear on the large version of our button. You must set this variable.|
 |`SQW_MESSAGE`|A custom message that will be shown to your adblockers. If using quotes, you must escape them.|
 |`SQW_TARGETING`|Only show the button to detected adblockers. Cannot be combined with the `beacon` mode.|
 |`SQW_BEACON`|Monitor adblocking rates quietly, without showing a SQweb button or banner to the end users.|
@@ -229,7 +228,7 @@ If you discover a security vulnerability within SQweb or this plugin, please sen
 
 ##License
 
-Copyright (C) 2015 – SQweb
+Copyright (C) 2015-2016 – SQweb
 
 This program is free software ; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation ; either version 3 of the License, or (at your option) any later version.
 
