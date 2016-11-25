@@ -16,12 +16,11 @@ before_script:
 - composer install --ignore-platform-reqs
 - phpenv rehash
 - vendor/bin/phpcs -i
-- nvm install 0.12
-- npm install
 script:
+- vendor/bin/parallel-lint src
 - vendor/bin/phpcs --standard=PSR2 src/ --extensions=php
 - vendor/bin/phpcpd src/
-- snyk test
+- sh build.sh
 notifications:
   slack:
     on_success: never
@@ -29,3 +28,11 @@ notifications:
     rooms:
       secure: A381N5xjkoIugDOmoZoxaCCynOCF11Xz4Sh6w8CFHrpJ2Z53zlUnOIa+rYrMKNlKzQYz3uUDqlzrHlct6h9DlEBdanB/Ez6rg61scSThciPTqDyS5LrtdZhH6/VIgOLgyaSkEDSfnnrXc+A2zfLTFDQgEx3BOfWReqXT4tlcMy5QXKGVj3lg4Kj4Q/cnosW8mb9LojffKILDN8o61EF46YSVOvkmbszCkel2ZAjkeKXoc+uR+qIFx1YNxbGwb/q+dynDFMkqhr323KaigkgBhisn7pDtTIYaAikwGScjsvfsBjfrMQUuCbWoXXQKO8u3uMsz3QLJBXg4brFhPLl0pW9u8KaZ2hb5d3cayXom9mCH1Lr8WIkw9tj+L0Aa18iC65Gl6R6ZlVEmkCT4cj9dNEN+oOKP2PDyUEgxSoY0bGabYmP07hc4TvKs3PA87ZMu3YCZkI7bLae32ZEMKban/ZeW/QVE1CBYzUTaUesfeMCDEaXYFQwpqcL+9G30wgV+twf0s1ywtvqcn2JatTd69RCgacJ6OeVM77TkiImv0bl0sya/soVIWwSSoGl7eq+in//n6BbAdAQtT6lW2xQWd3fxd6szOEH6cyhtjtkSw1CV+fGT4pE7000dwxQbZTk5GARdrou2MkotrMUm6MHPUW7xb57+a3kMtl+VgmhoLvA=
   email: false
+deploy:
+  provider: releases
+  api_key:
+    secure: DxGw9T1xflGn8SWb4PncxvnPJIVffzBXOktJcqfqkQWQdC2FTBZ3T+g8MIyzOIRyyDgUUuEtHftFJQrOOzurHSSooNla5GU/gdra+yv7ZBvuGBQxdn2XLLGKKULMGa4C90LaqH8moYcY8v3WcKI4HXJRj/0lkPqfUoX7Lw5qfqCf6BqLOhaFvIHxBnZA2x2s6ibCqWz9BQzEBU2TS6G+IlhBlVP06a+jCXiNa9ot/fbGC1yj86arW/9Q+ipCSt3BhRrjdXix6cHGimpgolKhL1/NodQvJkoniQx+mmGkYjnKkEzGEWnvH1lbQSkckcgGfCG+A82JzqbaFKQDEtdlvdipkvoOfXLYcWTHGBzbRDR8/DjX3Njy+ZRByGDXTnfyOgVewEqLkZYThz5NdmvYC0gUAw6cGNk3WFhO3GTGYu5v92XT98vnOFvIJZ1WG9ArsjPiCpqZeJhlxcFKOtG06eKN7EPyTdtXP4hYJk5Fp6NG+CWHqZToSMhqn/Us++0P7MiL0nOT5havRG9aHpCu50yg3izwefyAQbnjnMZonBsHfsTkztvCcSC6BJ9hflTFld11firSQ7dk+LbDttcqmsG4dLgAGwDYF0FlLsngoMxfZvDBfoilD/Utqhb1onDZbquqCNxLYGu5kFoPx4EbiTwtSgv+T73LBoY2V1eBEGU=
+  file: build/sqweb-sdk-php.zip
+  on:
+    repo: SQweb-team/SQweb-SDK-PHP
+    tags: true
