@@ -16,13 +16,10 @@ before_script:
 - composer install --ignore-platform-reqs
 - phpenv rehash
 - vendor/bin/phpcs -i
-- nvm install 0.12
-- npm install
 script:
 - vendor/bin/parallel-lint src
 - vendor/bin/phpcs --standard=PSR2 src/ --extensions=php
 - vendor/bin/phpcpd src/
-- snyk test
 notifications:
   slack:
     on_success: never

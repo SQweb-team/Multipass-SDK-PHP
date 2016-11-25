@@ -219,9 +219,7 @@ All PHP code must conform to the [PSR2 Standard](http://www.php-fig.org/psr/psr-
 
 ###Builds and Releases
 
-Releases are handled with `gulp`. To package a release of the SDK, simply execute `gulp`. This will prepare a zip for you in `dist/`.
-
-By default, the `build/` folder is automatically removed. If you want to keep it, say for debugging, you can package the SDK using `gulp keep-build`.
+See [RELEASE.md](RELEASE.md).
 
 ##Bugs and Security Vulnerabilities
 
