@@ -2,7 +2,7 @@
 
 # SQWEB - PHP SDK - RELEASE BUILDER
 # ------------------------------------------------------------------------------
-# This script simply zip all the required files for distribution.
+# This script simply zips all the required files for distribution.
 
 BUILD=build/sqweb-sdk-php
 

@@ -1,4 +1,4 @@
-### v1.5.0 - 2016-11-18
+### v1.5.0 - 2016-11-25
 
 * Added `tiny` and `large` options for the Multipass button.
 * Introduced `SQW_SITENAME` variable in our configuration file.
