@@ -20,7 +20,7 @@ script:
 - vendor/bin/parallel-lint src
 - vendor/bin/phpcs --standard=PSR2 src/ --extensions=php
 - vendor/bin/phpcpd src/
-- sh build.sh
+- ./build.sh
 notifications:
   slack:
     on_success: never
