@@ -122,6 +122,8 @@ $sqweb->button('slim');
 $sqweb->button('large');
 ```
 
+![Example Buttons](https://cdn.multipass.net/github/buttons@2x.png "Example Buttons")
+
 ###5. More functions
 
 #### Display only a part of your content to non premium users
