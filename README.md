@@ -105,9 +105,9 @@ Check if the user has credits, so that you can disable ads and/or unlock premium
 
 ```php
 if ($sqweb->checkCredits() > 0) {
-    //CONTENT
+    // CONTENT
 } else {
-    //ADS
+    // ADS
 }
 ```
 
@@ -172,9 +172,9 @@ Example:
 
 ```php
 if (waitToDisplay('15/09/16', 'd/m/y', 2)) {
-    The content here will appear 2 days after the publication date for non paying users.
+    // The content here will appear 2 days after the publication date for non paying users.
 } else {
-    Here you can put content that free users will see before the content above is available for all.
+    // Here you can put content that free users will see before the content above is available for all.
 }
 ```
 
@@ -235,7 +235,7 @@ If you discover a security vulnerability within SQweb or this plugin, please sen
 
 ## License
 
-Copyright (C) 2015-2016 – SQweb
+Copyright (C) 2015-2017 – SQweb
 
 This program is free software ; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation ; either version 3 of the License, or (at your option) any later version.
 
