@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.5.1 - 2017-05-09
+
+* Introduced `SQW_ADBLOCK_MODAL` configuration variable.
+* Updated CDN endpoint to Multipass.net.
+* Fixed `_sqw.sitename` in config object (must be quoted).
+
 ## v1.5.0 - 2016-11-25
 
 * Added `tiny` and `large` options for the Multipass button.

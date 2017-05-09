@@ -25,6 +25,7 @@ class SQweb
 
     private $SQW_ID_SITE = null;
     private $SQW_DEBUG = 'false';
+    private $SQW_ADBLOCK_MODAL = 'false';
     private $SQW_TARGETING = 'false';
     private $SQW_BEACON = 'false';
     private $SQW_DWIDE = 'false';
@@ -47,6 +48,7 @@ class SQweb
             'SQW_ID_SITE',
             'SQW_SITENAME',
             'SQW_DEBUG',
+            'SQW_ADBLOCK_MODAL',
             'SQW_TARGETING',
             'SQW_BEACON',
             'SQW_DWIDE',
@@ -131,8 +133,9 @@ class SQweb
         echo '<script>
             var _sqw = {
                 id_site: '. $this->SQW_ID_SITE .',
-                sitename: '. $this->SQW_SITENAME .',
+                sitename: "'. $this->SQW_SITENAME .'",
                 debug: '. $this->SQW_DEBUG .',
+                adblock_modal: '. $this->SQW_ADBLOCK_MODAL .',
                 targeting: '. $this->SQW_TARGETING .',
                 beacon: '. $this->SQW_BEACON .',
                 dwide: '. $this->SQW_DWIDE .',
@@ -140,7 +143,7 @@ class SQweb
                 msg: "'. $this->SQW_MESSAGE .'"};
         var script = document.createElement("script");
         script.type = "text/javascript";
-        script.src = "https://cdn.sqweb.com/sqweb.js";
+        script.src = "https://cdn.multipass.net/multipass.js";
         document.getElementsByTagName("head")[0].appendChild(script);</script>';
     }
 
