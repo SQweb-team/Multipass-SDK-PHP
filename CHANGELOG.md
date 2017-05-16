@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.5.3 - 2017-05-16
+
+* Fixed typo in error message.
+* Improved deployment automation.
+
 ## v1.5.2 - 2017-05-16
 
 * Updated API endpoint to Multipass.net.

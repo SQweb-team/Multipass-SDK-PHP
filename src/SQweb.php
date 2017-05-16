@@ -58,7 +58,7 @@ class SQweb
 
         if (!empty($config)) {
             if (empty($config['SQW_ID_SITE'])) {
-                throw new InvalidArgumentException('SQW_ID_SITE MUST be defined.');
+                throw new InvalidArgumentException('SQW_ID_SITE must be defined.');
             }
             foreach ($config_keys as $key) {
                 if (array_key_exists($key, $config)) {
@@ -107,7 +107,7 @@ class SQweb
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_CONNECTTIMEOUT_MS => 1000,
                     CURLOPT_TIMEOUT_MS => 1000,
-                    CURLOPT_USERAGENT => 'SQweb/SDK 1.5.2',
+                    CURLOPT_USERAGENT => 'SQweb/SDK 1.5.3',
                     CURLOPT_POSTFIELDS => array(
                         'token' => $_COOKIE['sqw_z'],
                         'site_id' => $site_id,
