@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.5.2 - 2017-05-16
+
+* Updated API endpoint to Multipass.net.
+
 ## v1.5.1 - 2017-05-16
 
 * Introduced `SQW_ADBLOCK_MODAL` configuration variable.

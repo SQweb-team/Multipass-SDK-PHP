@@ -103,11 +103,11 @@ class SQweb
             if (isset($_COOKIE['sqw_z']) && null !== $site_id) {
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
-                    CURLOPT_URL => 'https://api.sqweb.com/token/check',
+                    CURLOPT_URL => 'https://api.multipass.net/token/check',
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_CONNECTTIMEOUT_MS => 1000,
                     CURLOPT_TIMEOUT_MS => 1000,
-                    CURLOPT_USERAGENT => 'SQweb/SDK 1.5.1',
+                    CURLOPT_USERAGENT => 'SQweb/SDK 1.5.2',
                     CURLOPT_POSTFIELDS => array(
                         'token' => $_COOKIE['sqw_z'],
                         'site_id' => $site_id,
