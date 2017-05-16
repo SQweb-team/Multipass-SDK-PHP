@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.5.1 - 2017-05-09
+## v1.5.1 - 2017-05-16
 
 * Introduced `SQW_ADBLOCK_MODAL` configuration variable.
 * Updated CDN endpoint to Multipass.net.
