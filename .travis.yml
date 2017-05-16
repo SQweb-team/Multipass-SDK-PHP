@@ -1,16 +1,14 @@
 language:
   - php
 
+php:
+  - 5.5
+  - 5.6
+  - 7.0
+  - hhvm
+  - nightly
+
 matrix:
-  include:
-    - php: 5.6
-      env: GH_RELEASE="false"
-    - php: 5.6
-      env: GH_RELEASE="false"
-    - php: 7.0
-      env: GH_RELEASE="true"
-    - php: hhvm
-      env: GH_RELEASE="false"
   allow_failures:
     - php: hhvm
 
@@ -46,6 +44,7 @@ deploy:
   on:
     repo: SQweb-team/SQweb-SDK-PHP
     tags: true
+    php: 7.0
 
 after_deploy:
-  - if [[ ${GH_RELEASE} == "true" ]]; then "./after_deploy.sh"; fi
+  - "./after_deploy.sh";
