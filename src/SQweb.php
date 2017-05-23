@@ -44,7 +44,7 @@ class SQweb
     private function loadConfig($config = array())
     {
         // Pass in an array
-        $config_keys = [
+        $config_keys = array(
             'SQW_ID_SITE',
             'SQW_SITENAME',
             'SQW_DEBUG',
@@ -54,7 +54,7 @@ class SQweb
             'SQW_DWIDE',
             'SQW_LANG',
             'SQW_MESSAGE'
-        ];
+        );
 
         if (!empty($config)) {
             if (empty($config['SQW_ID_SITE'])) {
@@ -107,7 +107,7 @@ class SQweb
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_CONNECTTIMEOUT_MS => 1000,
                     CURLOPT_TIMEOUT_MS => 1000,
-                    CURLOPT_USERAGENT => 'SQweb/SDK 1.5.3',
+                    CURLOPT_USERAGENT => 'SQweb/SDK 1.5.4',
                     CURLOPT_POSTFIELDS => array(
                         'token' => $_COOKIE['sqw_z'],
                         'site_id' => $site_id,

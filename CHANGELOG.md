@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.5.4 - 2017-05-23
+
+* Fixed array syntax, for unsupported PHP versions.
+
 ## v1.5.3 - 2017-05-16
 
 * Fixed typo in error message.
