@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.5.5 - 2017-05-24
+
+* Fixed broken `explode()` in `sqweb_config.php` configuration option.
+
 ## v1.5.4 - 2017-05-23
 
 * Fixed array syntax, for unsupported PHP versions.
