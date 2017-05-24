@@ -81,7 +81,7 @@ class SQweb
         if (file_exists(__DIR__ . '/../../sqweb_config.php')) {
             $lines = file(__DIR__ . '/../../sqweb_config.php');
             foreach ($lines as $line) {
-                $tmp = explode('=', $value);
+                $tmp = explode('=', $line);
                 $key = $tmp[0];
                 if (in_array($key, $config_keys)) {
                     $this->$key = $tmp[1];
