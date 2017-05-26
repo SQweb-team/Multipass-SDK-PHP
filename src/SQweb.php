@@ -84,7 +84,7 @@ class SQweb
                 $tmp = explode('=', $line);
                 $key = $tmp[0];
                 if (in_array($key, $config_keys)) {
-                    $this->$key = $tmp[1];
+                    $this->$key = rtrim($tmp[1]);
                 }
             }
             return true;
