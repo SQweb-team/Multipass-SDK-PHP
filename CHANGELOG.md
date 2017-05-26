@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.5.6 - 2017-05-26
+
+* Added linebreaks cleanup to config file parser.
+
 ## v1.5.5 - 2017-05-24
 
 * Fixed broken `explode()` in `sqweb_config.php` configuration option.
