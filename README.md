@@ -131,6 +131,25 @@ $sqweb->button('large');
 
 ### 5. More functions
 
+#### Display a support div for your users
+```php
+/**
+ * Display a support block.
+ */
+
+function supportBlock() {   }
+``
+
+For instance:
+
+```php
+$sqweb = new SQweb;
+
+$sqweb->supportBlock();
+```
+
+Will display the block.
+
 #### Display only a part of your content to non premium users
 
 ```php

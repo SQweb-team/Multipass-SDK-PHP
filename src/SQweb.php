@@ -148,6 +148,53 @@ class SQweb
     }
 
     /**
+     * Display a support block.
+     */
+    public function supportBlock()
+    {
+        switch ($this->SQW_LANG) {
+            case 'fr':
+            case 'fr_fr':
+                $wording = array(
+                    'warning'       => 'La suite de cet article est reservée.',
+                    'already_sub'   => 'Déjà abonné ? ',
+                    'login'         => 'Connexion',
+                    'unlock'        => 'Débloquez ce contenu avec',
+                    'desc'          => 'Multipass est un abonnement multi-sites, sans engagement.',
+                    'href'          => 'https://www.multipass.net/fr/sites-partenaires-premium-sans-pub-ni-limites',
+                    'discover'      => 'Découvrir tous les partenaires'
+                );
+                break;
+
+            default:
+                $wording = array(
+                    'warning'       => 'The rest of this article is restricted.',
+                    'already_sub'   => 'Already a member? ',
+                    'login'         => 'Sign in',
+                    'unlock'        => 'Unlock this content, get your ',
+                    'desc'          => 'Multipass is a multisite subscription, with no commitment.',
+                    'href'          => 'https://www.multipass.net/en/premium-partners-website-without-ads-nor-restriction',
+                    'discover'      => 'Discover all the partners'
+                );
+                break;
+        }
+        echo '
+            <div class="footer__mp__normalize footer__mp__button_container">
+                <div class="footer__mp__button_header">
+                    <div class="footer__mp__button_header_title">' . $wording['warning'] . '</div>
+                    <div onclick="sqw.modal_first()" class="footer__mp__button_signin">' . $wording['already_sub'] . '<span class="footer__mp__button_login footer__mp__button_strong">' . $wording['login'] . '</span></div>
+                </div>
+                <div onclick="sqw.modal_first()" class="footer__mp__normalize footer__mp__button_cta">
+                    <a href="#" class="footer__mp__cta_fresh">' . $wording['unlock'] . '</a>
+                </div>
+                <div class="footer__mp__normalize footer__mp__button_footer">
+                    <p class="footer__mp__normalize footer__mp__button_p">' . $wording['desc'] . '</p>
+                    <a target="_blank" class="footer__mp__button_discover footer__mp__button_strong" href="' . $wording['href'] . '"><span>></span> <span class="footer__mp__button_footer_txt">' . $wording['discover'] . '</span></a>
+                </div>
+            </div>';
+    }
+
+    /**
      * Create the target button div.
      * @param null $size
      */
