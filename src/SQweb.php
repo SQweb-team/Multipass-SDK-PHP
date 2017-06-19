@@ -162,7 +162,7 @@ class SQweb
                     'unlock'        => 'Débloquez ce contenu avec',
                     'desc'          => 'L\'abonnement multi-sites, sans engagement.',
                     'href'          => 'https://www.multipass.net/fr/sites-partenaires-premium-sans-pub-ni-limites',
-                    'discover'      => 'Découvrir tous les partenaires'
+                    'discover'      => 'Découvrir les partenaires'
                 );
                 break;
 
