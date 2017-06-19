@@ -201,7 +201,7 @@ class SQweb
     private function selectText($type)
     {
         if ($type == 'support') {
-            switch ($this->config['lang']) {
+            switch ($this->SQW_LANG) {
                 case 'fr':
                 case 'fr_fr':
                     $wording = array(
@@ -229,7 +229,7 @@ class SQweb
                     break;
             }
         } elseif ($type == 'locking') {
-            switch ($this->config['lang']) {
+            switch ($this->SQW_LANG) {
                 case 'fr':
                 case 'fr_fr':
                     $wording = array(
