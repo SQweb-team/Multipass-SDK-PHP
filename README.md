@@ -131,6 +131,55 @@ $sqweb->button('large');
 
 ### 5. More functions
 
+#### Display a support div for your users
+```php
+/**
+ * Display a support block.
+ */
+
+function supportBlock() {   }
+``
+
+For instance:
+
+```php
+$sqweb = new SQweb;
+
+$sqweb->supportBlock();
+```
+
+Will display the block.
+
+#### Display a locking div for your users
+```php
+/**
+ * Display a locking block.
+ */
+
+function lockingBlock() {   }
+``
+
+For instance:
+
+```php
+$sqweb = new SQweb;
+
+$sqweb->lockingBlock();
+```
+
+Will display the block.
+
+We recommand you to use with our other blocking function like:
+
+```php
+if ($sqweb->waitToDisplay('15/09/16', 'd/m/y', 2)) {
+    // The content here will appear 2 days after the publication date for non paying users.
+} else {
+    // Here you can put content that free users will see before the content above is available for all.
+    // $sqweb->lockingBlock();
+}
+```
+
 #### Display only a part of your content to non premium users
 
 ```php
@@ -148,7 +197,7 @@ function transparent($text, $percent = 100) { ... }
 For instance:
 
 ```php
-echo transparent('one two three four', 50);
+echo $sqweb->transparent('one two three four', 50);
 ```
 
 Will display for free users:
@@ -171,7 +220,7 @@ function waitToDisplay($date, $wait = 0) { ... }
 Example:
 
 ```php
-if (waitToDisplay('15/09/16', 'd/m/y', 2)) {
+if ($sqweb->waitToDisplay('15/09/16', 'd/m/y', 2)) {
     // The content here will appear 2 days after the publication date for non paying users.
 } else {
     // Here you can put content that free users will see before the content above is available for all.
@@ -191,7 +240,7 @@ function limitArticle($limitation = 0) { ... }
 For instance, if I want to display only 5 articles to free users:
 
 ```php
-if (limitArticle(5) == true) {
+if ($sqweb->limitArticle(5) == true) {
     echo "This is my article";
 } else {
     echo "Sorry, you reached the limit of pages you can see today, come back tomorrow or subscribe to Multipass to get unlimited articles !";

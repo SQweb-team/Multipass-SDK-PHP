@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.5.7 - 2017-06-08
+
+* Added a new function to display a support block.
+* Added a new function to display a locking block.
+
 ## v1.5.6 - 2017-05-26
 
 * Added linebreaks cleanup to config file parser.
