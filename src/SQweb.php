@@ -160,7 +160,7 @@ class SQweb
                     'already_sub'   => 'Déjà abonné ? ',
                     'login'         => 'Connexion',
                     'unlock'        => 'Débloquez ce contenu avec',
-                    'desc'          => 'Multipass est un abonnement multi-sites, sans engagement.',
+                    'desc'          => 'L\'abonnement multi-sites, sans engagement.',
                     'href'          => 'https://www.multipass.net/fr/sites-partenaires-premium-sans-pub-ni-limites',
                     'discover'      => 'Découvrir tous les partenaires'
                 );
@@ -172,7 +172,7 @@ class SQweb
                     'already_sub'   => 'Already a member? ',
                     'login'         => 'Sign in',
                     'unlock'        => 'Unlock this content, get your ',
-                    'desc'          => 'Multipass is a multisite subscription, with no commitment.',
+                    'desc'          => 'The multisite subscription, with no commitment.',
                     'href'          => 'https://www.multipass.net/en/premium-partners-website-without-ads-nor-restriction',
                     'discover'      => 'Discover all the partners'
                 );
