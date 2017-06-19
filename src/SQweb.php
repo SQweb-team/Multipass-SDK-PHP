@@ -147,44 +147,40 @@ class SQweb
         document.getElementsByTagName("head")[0].appendChild(script);</script>';
     }
 
-    /**
-     * Display a support block.
+   /*
+     * Display a button for locked content
+     */
+    public function lockingBlock()
+    {
+        $html = $this->returnBlock('locking');
+
+        echo $html;
+    }
+
+    /*
+     * Display a supporting button
      */
     public function supportBlock()
     {
-        switch ($this->SQW_LANG) {
-            case 'fr':
-            case 'fr_fr':
-                $wording = array(
-                    'warning'       => 'La suite de cet article est reservée.',
-                    'already_sub'   => 'Déjà abonné ? ',
-                    'login'         => 'Connexion',
-                    'unlock'        => 'Débloquez ce contenu avec',
-                    'desc'          => 'L\'abonnement multi-sites, sans engagement.',
-                    'href'          => 'https://www.multipass.net/fr/sites-partenaires-premium-sans-pub-ni-limites',
-                    'discover'      => 'Découvrir les partenaires'
-                );
-                break;
+        $html = $this->returnBlock('support');
 
-            default:
-                $wording = array(
-                    'warning'       => 'The rest of this article is restricted.',
-                    'already_sub'   => 'Already a member? ',
-                    'login'         => 'Sign in',
-                    'unlock'        => 'Unlock this content, get your ',
-                    'desc'          => 'The multisite subscription, with no commitment.',
-                    'href'          => 'https://www.multipass.net/en/premium-partners-website-without-ads-nor-restriction',
-                    'discover'      => 'Discover all the partners'
-                );
-                break;
-        }
-        echo '
+        echo $html;
+    }
+
+    /*
+     * Return the good button according to parent function.
+     */
+    private function returnBlock($type)
+    {
+        $wording = $this->selectText($type);
+
+        return '
             <div class="footer__mp__normalize footer__mp__button_container">
                 <div class="footer__mp__button_header">
                     <div class="footer__mp__button_header_title">' . $wording['warning'] . '</div>
                     <div onclick="sqw.modal_first()" class="footer__mp__button_signin">'
                     . $wording['already_sub']
-                    . '<span class="footer__mp__button_login footer__mp__button_strong">'
+                    . '<span onclick="sqw.modal_first()" class="footer__mp__button_login footer__mp__button_strong">'
                     . $wording['login']
                     . '</span></div>
                 </div>
@@ -192,7 +188,7 @@ class SQweb
                     <a href="#" class="footer__mp__cta_fresh">' . $wording['unlock'] . '</a>
                 </div>
                 <div class="footer__mp__normalize footer__mp__button_footer">
-                    <p class="footer__mp__normalize footer__mp__button_p">' . $wording['desc'] . '</p>
+                    <p class="footer__mp__normalize footer__mp__button_p">'. $wording['desc'] . '</p>
                     <a target="_blank" class="footer__mp__button_discover footer__mp__button_strong" href="'
                     . $wording['href']
                     . '"><span>></span> <span class="footer__mp__button_footer_txt">'
@@ -200,6 +196,68 @@ class SQweb
                     . '</span></a>
                 </div>
             </div>';
+    }
+
+    private function selectText($type)
+    {
+        if ($type == 'support') {
+            switch ($this->config['lang']) {
+                case 'fr':
+                case 'fr_fr':
+                    $wording = array(
+                        'warning'       => 'Surfez sans publicité.',
+                        'already_sub'   => 'Déjà abonné ? ',
+                        'login'         => 'Connexion',
+                        'unlock'        => 'Soutenez notre site grâce à ',
+                        'desc'          => 'L\'abonnement multi-sites, sans engagement.',
+                        'href'          => 'https://www.multipass.net/fr/sites-partenaires-premium-sans-pub-ni-limites',
+                        'discover'      => 'Découvrir les partenaires'
+                    );
+                    break;
+
+                default:
+                    $href = 'https://www.multipass.net/en premium-partners-website-without-ads-nor-restriction';
+                    $wording = array(
+                        'warning'       => 'Surf our website ad free',
+                        'already_sub'   => 'Already a member? ',
+                        'login'         => 'Sign in',
+                        'unlock'        => 'Support our website, get your',
+                        'desc'          => 'The multisite subscription, with no commitment.',
+                        'href'          => $href,
+                        'discover'      => 'Discover all the partners'
+                    );
+                    break;
+            }
+        } elseif ($type == 'locking') {
+            switch ($this->config['lang']) {
+                case 'fr':
+                case 'fr_fr':
+                    $wording = array(
+                        'warning'       => 'Cet article est reservé.',
+                        'already_sub'   => 'Déjà abonné ? ',
+                        'login'         => 'Connexion',
+                        'unlock'        => 'Débloquez ce contenu avec',
+                        'desc'          => 'L\'abonnement multi-sites, sans engagement.',
+                        'href'          => 'https://www.multipass.net/fr/sites-partenaires-premium-sans-pub-ni-limites',
+                        'discover'      => 'Découvrir les partenaires'
+                    );
+                    break;
+
+                default:
+                    $href = 'https://www.multipass.net/en premium-partners-website-without-ads-nor-restriction';
+                    $wording = array(
+                        'warning'       => 'The rest of this article is restricted.',
+                        'already_sub'   => 'Already a member? ',
+                        'login'         => 'Sign in',
+                        'unlock'        => 'Unlock this content, get your ',
+                        'desc'          => 'The multisite subscription, with no commitment.',
+                        'href'          => $href,
+                        'discover'      => 'Discover all the partners'
+                    );
+                    break;
+            }
+        }
+        return $wording;
     }
 
     /**
