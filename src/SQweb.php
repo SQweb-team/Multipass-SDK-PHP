@@ -182,14 +182,22 @@ class SQweb
             <div class="footer__mp__normalize footer__mp__button_container">
                 <div class="footer__mp__button_header">
                     <div class="footer__mp__button_header_title">' . $wording['warning'] . '</div>
-                    <div onclick="sqw.modal_first()" class="footer__mp__button_signin">' . $wording['already_sub'] . '<span class="footer__mp__button_login footer__mp__button_strong">' . $wording['login'] . '</span></div>
+                    <div onclick="sqw.modal_first()" class="footer__mp__button_signin">'
+                    . $wording['already_sub']
+                    . '<span class="footer__mp__button_login footer__mp__button_strong">'
+                    . $wording['login']
+                    . '</span></div>
                 </div>
                 <div onclick="sqw.modal_first()" class="footer__mp__normalize footer__mp__button_cta">
                     <a href="#" class="footer__mp__cta_fresh">' . $wording['unlock'] . '</a>
                 </div>
                 <div class="footer__mp__normalize footer__mp__button_footer">
                     <p class="footer__mp__normalize footer__mp__button_p">' . $wording['desc'] . '</p>
-                    <a target="_blank" class="footer__mp__button_discover footer__mp__button_strong" href="' . $wording['href'] . '"><span>></span> <span class="footer__mp__button_footer_txt">' . $wording['discover'] . '</span></a>
+                    <a target="_blank" class="footer__mp__button_discover footer__mp__button_strong" href="'
+                    . $wording['href']
+                    . '"><span>></span> <span class="footer__mp__button_footer_txt">'
+                    . $wording['discover']
+                    . '</span></a>
                 </div>
             </div>';
     }
