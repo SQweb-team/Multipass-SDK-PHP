@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.5.8 - 2017-07-05
+
+* Replaced the support block with a "Support us" message.
+
 ## v1.5.7 - 2017-06-08
 
 * Added a new function to display a support block.
