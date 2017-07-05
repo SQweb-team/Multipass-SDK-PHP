@@ -134,7 +134,7 @@ $sqweb->button('large');
 #### Display a support div for your users
 ```php
 /**
- * Display a support block.
+ * Display a "Support us" message.
  */
 
 function supportBlock() {   }
