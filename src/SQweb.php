@@ -167,12 +167,12 @@ class SQweb
             case 'fr_fr':
                 $wording = array(
                     'title'         => 'L\'article est terminé ...',
-                    'sentence_1'    => '... mais nous avons besoin que vous lisiez ceci: nous avons de plus en plus de lecteurs chaque jour,
-                                    mais de moins en moins de revenus publicitaires.',
-                    'sentence_2'    => 'Nous souhaitons laisser notre contenu accessible à tous. Nous sommes indépendants et notre travail de qualité prend beaucoup de temps,
-                                 d\'argent et de dévotion',
-                    'sentence_3'    => 'Vous pouvez nous soutenir avec Multipass qui permet de payer pour un bouquet de sites,
-                                     et ainsi financer le travail des créateurs et journalistes que vous aimez.',
+                    'sentence_1'    => '... mais nous avons besoin que vous lisiez ceci: nous avons de plus en plus
+                         de lecteurs chaque jour, mais de moins en moins de revenus publicitaires.',
+                    'sentence_2'    => 'Nous souhaitons laisser notre contenu accessible à tous. Nous sommes
+                         indépendants et notre travail de qualité prend beaucoup de temps, d\'argent et de dévotion',
+                    'sentence_3'    => 'Vous pouvez nous soutenir avec Multipass qui permet de payer pour un bouquet de
+                         sites, et ainsi financer le travail des créateurs et journalistes que vous aimez.',
                     'support'       => 'Soutenez nous avec'
                 );
                 break;
@@ -180,12 +180,13 @@ class SQweb
             default:
                 $wording = array(
                     'title'         => 'Continue reading...',
-                    'sentence_1'    => '... we need you to hear this: More people are reading our website than ever but advertising revenues across the media are falling fast.
-                                         We need you to hear this: More people are reading our website than ever but advertising revenues across the media are falling fast.',
+                    'sentence_1'    => '... we need you to hear this: More people are reading our website than ever but
+                         advertising revenues across the media are falling fast. We need you to hear this: More people
+                         are reading our website than ever but advertising revenues across the media are falling fast.',
                     'sentence_2'    => ' We want to keep our content as open as we can. We are independent,
-                                     and our quality work takes a lot of time, money and hard work to produce. ',
-                    'sentence_3'    => 'You can support us with Multipass which enables you to pay for a bundle of websites:
-                                     you can finance the work of journalists and content creators you love.',
+                         and our quality work takes a lot of time, money and hard work to produce. ',
+                    'sentence_3'    => 'You can support us with Multipass which enables you to pay for a bundle of
+                         websites: you can finance the work of journalists and content creators you love.',
                     'support'       => 'Support us with'
                 );
                 break;
