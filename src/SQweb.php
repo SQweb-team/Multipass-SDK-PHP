@@ -1,7 +1,7 @@
 <?php
 
 /*
- * SQweb PHP SDK
+ * SQweb PHP SDK v1.5.9
  * @link https://github.com/SQweb-team/SQweb-SDK-PHP
  * @license http://opensource.org/licenses/GPL-3.0
  */
@@ -107,7 +107,7 @@ class SQweb
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_CONNECTTIMEOUT_MS => 1000,
                     CURLOPT_TIMEOUT_MS => 1000,
-                    CURLOPT_USERAGENT => 'SQweb/SDK 1.5.6',
+                    CURLOPT_USERAGENT => 'SQweb/SDK 1.5.9',
                     CURLOPT_POSTFIELDS => array(
                         'token' => $_COOKIE['sqw_z'],
                         'site_id' => $site_id,
@@ -193,16 +193,16 @@ class SQweb
         }
 
         $html = '
-            <div class="article-footer-container">
-                <div class="article-footer-body">
-                    <div class="article-footer-body-title">' . $wording['title'] . '</div>
-                    <div class="article-footer-body-content1">' . $wording['sentence_1'] .'</div>
-                    <div class="article-footer-body-content2">' . $wording['sentence_2'] . '</div>
-                    <div class="article-footer-body-content3">' . $wording['sentence_3'] . '</div>
+            <div class="sqw-article-footer-container">
+                <div class="sqw-article-footer-body">
+                    <div class="sqw-article-footer-body-title">' . $wording['title'] . '</div>
+                    <div class="sqw-article-footer-body-content1">' . $wording['sentence_1'] .'</div>
+                    <div class="sqw-article-footer-body-content2">' . $wording['sentence_2'] . '</div>
+                    <div class="sqw-article-footer-body-content3">' . $wording['sentence_3'] . '</div>
                 </div>
-                <div onclick="sqw.modal_first()" class="article-footer-footer">
-                    <div class="article-footer-footer-text">' . $wording['support'] . '</div>
-                    <div class="article-footer-footer-logo-container"></div>
+                <div onclick="sqw.modal_first()" class="sqw-article-footer-footer">
+                    <div class="sqw-article-footer-footer-text">' . $wording['support'] . '</div>
+                    <div class="sqw-article-footer-footer-logo-container"></div>
                 </div>
             </div>';
 
