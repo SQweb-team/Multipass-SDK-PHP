@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.5.9 - 2017-07-11
+
+* Fixed a typo in css.
+
 ## v1.5.8 - 2017-07-05
 
 * Replaced the support block with a "Support us" message.
