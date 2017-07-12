@@ -55,7 +55,6 @@ class SQweb
             'SQW_LANG',
             'SQW_MESSAGE'
         );
-
         if (!empty($config)) {
             if (empty($config['SQW_ID_SITE'])) {
                 throw new InvalidArgumentException('SQW_ID_SITE must be defined.');
@@ -107,7 +106,7 @@ class SQweb
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_CONNECTTIMEOUT_MS => 1000,
                     CURLOPT_TIMEOUT_MS => 1000,
-                    CURLOPT_USERAGENT => 'SQweb/SDK 1.5.9',
+                    CURLOPT_USERAGENT => 'SQweb/SDK 1.6.0',
                     CURLOPT_POSTFIELDS => array(
                         'token' => $_COOKIE['sqw_z'],
                         'site_id' => $site_id,
@@ -413,7 +412,7 @@ class SQweb
 
     /**
      * Display your premium content at a later date to non-paying users.
-     * @param  string  $date  When to publish the content on your site. It must be an ISO format(YYYY-MM-DD).
+     * @param  string  $date  Date of publishing the content on your site. It must be an ISO format(YYYY-MM-DD).
      * @param  integer $wait  Days to wait before showing this content to free users.
      * @return bool
      */

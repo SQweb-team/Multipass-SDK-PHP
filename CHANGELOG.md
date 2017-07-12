@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.6.0 - 2017-07-12
+
+* Added exemples pages which are also tests.
+
 ## v1.5.9 - 2017-07-11
 
 * Fixed a typo in css.
