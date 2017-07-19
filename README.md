@@ -73,7 +73,7 @@ For additional settings, see "[Options](#options)" below.
 
 ### 1. Initializing the SDK
 
-You have to initialise the SQweb variable on the pages where you need it with this piece of code:
+First, you have to initialise SQweb variable on the pages where you wish to use it.
 
 If you used composer:
 
@@ -89,7 +89,7 @@ include_once "whereYouInstalled/src/init.php";
 
 ### 2. Tagging your pages
 
-This function outputs the SQweb JavaScript tag. Insert it before the closing `</body>` tag in your HTML.
+Then, you need to add our JavaScript tag to your pages. This function will do it for you, and should be inserted before the closing `</body>` tag in your HTML.
 
 ```php
 $sqweb->script();
@@ -167,16 +167,14 @@ $sqweb = new SQweb;
 $sqweb->lockingBlock();
 ```
 
-Will display the block.
-
-We recommand you to use with our other blocking function like:
+We recommend that you use it with our other blocking function :
 
 ```php
 if ($sqweb->waitToDisplay('15/09/16', 'd/m/y', 2)) {
     // The content here will appear 2 days after the publication date for non paying users.
 } else {
-    // Here you can put content that free users will see before the content above is available for all.
-    // $sqweb->lockingBlock();
+    // Here you can put content that free users will see until the content above is available for all.
+    $sqweb->lockingBlock();
 }
 ```
 
@@ -200,7 +198,7 @@ For instance:
 echo $sqweb->transparent('one two three four', 50);
 ```
 
-Will display for free users:
+Free users will see:
 
 ```text
 one two
@@ -223,24 +221,16 @@ Example:
 if ($sqweb->waitToDisplay('15/09/16', 'd/m/y', 2)) {
     // The content here will appear 2 days after the publication date for non paying users.
 } else {
-    // Here you can put content that free users will see before the content above is available for all.
+    // Here you can put content that free users will see until the content above is available for all.
 }
 ```
 
 #### Limit the number of articles free users can read per day
 
-```php
-/*
- * @param int $limitation  Number of articles a free user can see.
- */
-
-function limitArticle($limitation = 0) { ... }
-```
-
 For instance, if I want to display only 5 articles to free users:
 
 ```php
-if ($sqweb->limitArticle(5) == true) {
+if ($sqweb->limitArticle(5) === true) {
     echo "This is my article";
 } else {
     echo "Sorry, you reached the limit of pages you can see today, come back tomorrow or subscribe to Multipass to get unlimited articles !";
