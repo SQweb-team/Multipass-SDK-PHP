@@ -76,9 +76,9 @@ class SQweb
             }
             return true;
         }
-        // Or fallback to looking for sqweb_config.php
-        if (file_exists(__DIR__ . '/../../sqweb_config.php')) {
-            $lines = file(__DIR__ . '/../../sqweb_config.php');
+        // Or fallback to looking for sqweb.config
+        if (file_exists(__DIR__ . '/../../sqweb.config')) {
+            $lines = file(__DIR__ . '/../../sqweb.config');
             foreach ($lines as $line) {
                 $tmp = explode('=', $line);
                 $key = $tmp[0];

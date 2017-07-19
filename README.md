@@ -48,19 +48,19 @@ For additional settings, see "[Options](#options)" below.
 ### Manually
 
 1. Download [the latest release](https://github.com/SQweb-team/SQweb-SDK-PHP/releases) of the SDK and unzip it in a folder named `sqweb` in your project root.
-2. Create a file named `sqweb_config.php` at the root of your project. This file should be one level up from the sqweb folder you just created, i.e. :
+2. Create a file named `sqweb.config` at the root of your project. This file should be one level up from the sqweb folder you just created, i.e. :
 
     ```text
     |–- sqweb/
     |   |-- src/
     |   |   |-- init.php
     |   |   |-- SQweb.php
-    |-- sqweb_config.php
+    |-- sqweb.config
     ```
 
-3. In `sqweb_config.php`, paste the following configuration:
+3. In `sqweb.config`, paste the following configuration:
 
-    ```php
+    ```text
     SQW_ID_SITE=YOUR_WEBSITE_ID
     SQW_SITENAME=YOUR_WEBSITE_NAME
     ```
@@ -287,7 +287,7 @@ If you discover a security vulnerability within SQweb or this plugin, please sen
 
 Copyright (C) 2015-2017 – SQweb
 
-This program is free software ; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation ; either version 3 of the License, or (at your option) any later version.
+This program is free software ; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation ; either version 3 of the License, or any later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY ; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details
 

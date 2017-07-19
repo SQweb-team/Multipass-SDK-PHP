@@ -1,7 +1,8 @@
 # Changelog
 
-## v1.6.0 - 2017-07-12
+## v1.6.0 - 2017-07-19
 
+* BREAKING : Renamed misleading `sqweb_config.php` to `sqweb.config`.
 * Added exemples pages which are also tests.
 
 ## v1.5.9 - 2017-07-11
