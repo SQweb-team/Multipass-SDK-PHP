@@ -27,6 +27,7 @@ If you're using WordPress, we've made it easy for you. Download the SQweb plugin
     ```php
     SQW_ID_SITE=YOUR_WEBSITE_ID
     SQW_SITENAME=YOUR_WEBSITE_NAME
+    SQW_LANG=en
     ```
 
     **Change `SQW_ID_SITE` with your website ID and `SQW_SITENAME` with the name to show on the large Multipass button**.
@@ -63,6 +64,7 @@ For additional settings, see "[Options](#options)" below.
     ```text
     SQW_ID_SITE=YOUR_WEBSITE_ID
     SQW_SITENAME=YOUR_WEBSITE_NAME
+    SQW_LANG=en
     ```
 
     **Change `SQW_ID_SITE` with your website ID and `SQW_SITENAME` with the name to show on the large Multipass button**.
@@ -254,6 +256,16 @@ Unless otherwise noted, these options default to `false`. You can set them in yo
 ## Known Issues
 
 If you change the value of `SQW_DWIDE` after initial deployment, your users will have to log in again since their auth cookie will no longer be valid.
+
+## Troubleshooting
+
+### I am not seeing the Multipass button
+
+Please make sure you have properly [initialized the SDK](#1-initializing-the-sdk) and [tagged your pages](#2-tagging-your-pages). Mind the position of the include and tag.
+
+### I can see the Multipass button, but I cannot login
+
+The authentication requires cookies, which require [fully qualified domain names](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). If you are testing on localhost or an IP, the authentication will succeed but won't be able to save a cookie in your browser.
 
 ## Contributing
 
