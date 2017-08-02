@@ -1,7 +1,11 @@
 <?php
 
 /*
- * SQweb PHP SDK v1.5.9
+ * SQweb PHP SDK v1.6.0
+ * @author Pierre Lavaux <pierre@multipass.net>
+ * @author Mathieu Darrigade <mathieu@multipass.net>
+ * @author Nicolas Verdonck <nicolas@sqweb.com>
+ * @author Bastien Botella <bastien@sqweb.com>
  * @link https://github.com/SQweb-team/SQweb-SDK-PHP
  * @license http://opensource.org/licenses/GPL-3.0
  */
@@ -76,7 +80,7 @@ class SQweb
             }
             return true;
         }
-        // Or fallback to looking for sqweb.config
+        // Or fallback to sqweb.config
         if (file_exists(__DIR__ . '/../../sqweb.config')) {
             $lines = file(__DIR__ . '/../../sqweb.config');
             foreach ($lines as $line) {
@@ -257,7 +261,7 @@ class SQweb
                     break;
 
                 default:
-                    $href = 'https://www.multipass.net/en premium-partners-website-without-ads-nor-restriction';
+                    $href = 'https://www.multipass.net/en/premium-partners-website-without-ads-nor-restriction';
                     $wording = array(
                         'warning'       => 'Surf our website ad free',
                         'already_sub'   => 'Already a member? ',
