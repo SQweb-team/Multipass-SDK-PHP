@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.6.1 - 2017-11-07
+
+* Implemented a 'support us' version of the login button.
+* Made all logins button's text customizable.
+
 ## v1.6.0 - 2017-07-19
 
 * BREAKING : Renamed misleading `sqweb_config.php` to `sqweb.config`.

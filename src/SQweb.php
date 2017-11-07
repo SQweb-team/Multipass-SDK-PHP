@@ -1,7 +1,7 @@
 <?php
 
 /*
- * SQweb PHP SDK v1.6.0
+ * SQweb PHP SDK v1.6.1
  * @author Pierre Lavaux <pierre@multipass.net>
  * @author Mathieu Darrigade <mathieu@multipass.net>
  * @author Nicolas Verdonck <nicolas@sqweb.com>
@@ -36,6 +36,15 @@ class SQweb
     private $SQW_LANG = 'en';
     private $SQW_SITENAME = '';
     private $SQW_MESSAGE = '';
+    private $SQW_LOGIN = '';
+    private $SQW_CONNECTED = '';
+    private $SQW_SUPPORT = '';
+    private $SQW_BTN_NOADS = '';
+    private $SQW_LOGIN_TINY = '';
+    private $SQW_CONNECTED_S = '';
+    private $SQW_CONNECTED_SUPPORT = '';
+    private $SQW_BTN_UNLIMITED = '';
+    private $SQW_CONNECTED_TINY = '';
 
     /**
      * @param array $config (optional) with keys matching the SQW_* class attributes.
@@ -57,8 +66,18 @@ class SQweb
             'SQW_BEACON',
             'SQW_DWIDE',
             'SQW_LANG',
-            'SQW_MESSAGE'
+            'SQW_MESSAGE',
+            'SQW_LOGIN',
+            'SQW_SUPPORT',
+            'SQW_CONNECTED',
+            'SQW_BTN_NOADS',
+            'SQW_LOGIN_TINY',
+            'SQW_CONNECTED_S',
+            'SQW_BTN_UNLIMITED',
+            'SQW_CONNECTED_TINY',
+            'SQW_CONNECTED_SUPPORT'
         );
+
         if (!empty($config)) {
             if (empty($config['SQW_ID_SITE'])) {
                 throw new InvalidArgumentException('SQW_ID_SITE must be defined.');
@@ -110,7 +129,7 @@ class SQweb
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_CONNECTTIMEOUT_MS => 1000,
                     CURLOPT_TIMEOUT_MS => 1000,
-                    CURLOPT_USERAGENT => 'SQweb/SDK 1.6.0',
+                    CURLOPT_USERAGENT => 'SQweb/SDK 1.6.1',
                     CURLOPT_POSTFIELDS => array(
                         'token' => $_COOKIE['sqw_z'],
                         'site_id' => $site_id,
@@ -143,7 +162,17 @@ class SQweb
                 beacon: '. $this->SQW_BEACON .',
                 dwide: '. $this->SQW_DWIDE .',
                 i18n: "'. $this->SQW_LANG .'",
-                msg: "'. $this->SQW_MESSAGE .'"};
+                msg: "'. $this->SQW_MESSAGE .'",
+                login: "' . $this->SQW_LOGIN . '",
+                connected: "' . $this->SQW_CONNECTED . '",
+                support: "' . $this->SQW_SUPPORT . '",
+                btn_noads: "' . $this->SQW_BTN_NOADS . '",
+                login_tiny: "' . $this->SQW_LOGIN_TINY . '",
+                connected_s: "' . $this->SQW_CONNECTED_S . '",
+                connected_support: "' . $this->SQW_CONNECTED_SUPPORT . '",
+                btn_unlimited: "' . $this->SQW_BTN_UNLIMITED . '",
+                connected_tiny: "' . $this->SQW_CONNECTED_TINY . '"
+            };
         var script = document.createElement("script");
         script.type = "text/javascript";
         script.src = "https://cdn.multipass.net/multipass.js";
@@ -317,6 +346,8 @@ class SQweb
             echo '<div class="sqweb-button multipass-slim"></div>';
         } elseif ($size === 'large') {
             echo '<div class="sqweb-button multipass-large"></div>';
+        } elseif ($size === 'support') {
+            echo '<div class="sqweb-button-support"></div>';
         } else { // multipass-regular
             echo '<div class="sqweb-button"></div>';
         }
