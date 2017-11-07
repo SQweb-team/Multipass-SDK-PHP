@@ -113,7 +113,7 @@ if ($sqweb->checkCredits() > 0) {
 }
 ```
 
-### 4. Showing the Multipass button
+### 4.a Showing the Multipass button
 
 Use this code to display the Multipass button on your pages:
 
@@ -130,6 +130,22 @@ $sqweb->button('large');
 ```
 
 ![Example Buttons](https://cdn.multipass.net/github/buttons@2x.png "Example Buttons")
+
+### 4.b Customizing the Multipass button
+
+If you want to customize our different type of button, put the following in your config file (`.env` if you used composer and dotenv or `sqweb.config` if you did not) of in the sqweb config file.  
+For instance:  
+``SQW_LOGIN=Hello world``
+Will show  `Hello world` instead of `Premium with Multipass` on the regular button for logged out visitors.
+
+
+|Button Model|Logged in|Logged out
+|---|:---:|:---:|
+|Tiny|`SQW_CONNECTED_TINY`|`SQW_LOGIN_TINY`|
+|Regular|`SQW_CONNECTED`|`SQW_LOGIN`|
+|Large - before black dot| N / A | `SQW_BTN_UNLIMITED`|
+|Large - after black dot| N / A | `SQW_BTN_NOADS`|
+|Large connected| `SQW_CONNECTED_S` | N / A|
 
 ### 5. More functions
 
