@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.6.2 - 2017-11-20
+
+* Added a sqweb.config.example in assets directory.
+* Now passing click event when opening iframe.
+
 ## v1.6.1 - 2017-11-07
 
 * Implemented a 'support us' version of the login button.
