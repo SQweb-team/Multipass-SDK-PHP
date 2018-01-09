@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.7.0 - 2018-01-09
+
+* Now support more locales.
+* Added autologin feature.
+* Reworked script method.
+
 ## v1.6.2 - 2017-11-20
 
 * Added a sqweb.config.example in assets directory.

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * SQweb PHP SDK v1.6.2
+ * SQweb PHP SDK v1.7.0
  * @author Pierre Lavaux <pierre@multipass.net>
  * @author Mathieu Darrigade <mathieu@multipass.net>
  * @author Nicolas Verdonck <nicolas@sqweb.com>
@@ -27,24 +27,27 @@ class SQweb
 
     private $response;
 
-    private $SQW_ID_SITE = null;
-    private $SQW_DEBUG = 'false';
-    private $SQW_ADBLOCK_MODAL = 'false';
-    private $SQW_TARGETING = 'false';
-    private $SQW_BEACON = 'false';
-    private $SQW_DWIDE = 'false';
-    private $SQW_LANG = 'en';
-    private $SQW_SITENAME = '';
-    private $SQW_MESSAGE = '';
-    private $SQW_LOGIN = '';
-    private $SQW_CONNECTED = '';
-    private $SQW_SUPPORT = '';
-    private $SQW_BTN_NOADS = '';
-    private $SQW_LOGIN_TINY = '';
-    private $SQW_CONNECTED_S = '';
-    private $SQW_CONNECTED_SUPPORT = '';
-    private $SQW_BTN_UNLIMITED = '';
-    private $SQW_CONNECTED_TINY = '';
+    private $settings = array(
+        'SQW_ID_SITE' => null,
+        'SQW_SITENAME' => '',
+        'SQW_DEBUG' => 'false',
+        'SQW_ADBLOCK_MODAL' => 'false',
+        'SQW_TARGETING' => 'false',
+        'SQW_BEACON' => 'false',
+        'SQW_DWIDE' => 'false',
+        'SQW_LANG' => 'en_US',
+        'SQW_MESSAGE' => '',
+        'SQW_LOGIN' => '',
+        'SQW_SUPPORT' => '',
+        'SQW_CONNECTED' => '',
+        'SQW_BTN_NOADS' => '',
+        'SQW_LOGIN_TINY' => '',
+        'SQW_CONNECTED_S' => '',
+        'SQW_BTN_UNLIMITED' => '',
+        'SQW_CONNECTED_TINY' => '',
+        'SQW_CONNECTED_SUPPORT' => '',
+        'SQW_AUTOLOGIN' => 'true',
+    );
 
     /**
      * @param array $config (optional) with keys matching the SQW_* class attributes.
@@ -54,61 +57,46 @@ class SQweb
         $this->loadConfig($config);
     }
 
-    private function loadConfig($config = array())
+    private function loadConfig($config)
     {
-        // Pass in an array
-        $config_keys = array(
-            'SQW_ID_SITE',
-            'SQW_SITENAME',
-            'SQW_DEBUG',
-            'SQW_ADBLOCK_MODAL',
-            'SQW_TARGETING',
-            'SQW_BEACON',
-            'SQW_DWIDE',
-            'SQW_LANG',
-            'SQW_MESSAGE',
-            'SQW_LOGIN',
-            'SQW_SUPPORT',
-            'SQW_CONNECTED',
-            'SQW_BTN_NOADS',
-            'SQW_LOGIN_TINY',
-            'SQW_CONNECTED_S',
-            'SQW_BTN_UNLIMITED',
-            'SQW_CONNECTED_TINY',
-            'SQW_CONNECTED_SUPPORT'
-        );
-
         if (!empty($config)) {
             if (empty($config['SQW_ID_SITE'])) {
                 throw new InvalidArgumentException('SQW_ID_SITE must be defined.');
             }
-            foreach ($config_keys as $key) {
+            foreach (array_keys($this->settings) as $key) {
                 if (array_key_exists($key, $config)) {
-                    $this->$key = $config[$key];
+                    $this->settings[$key] = $config[$key];
                 }
             }
+
             return true;
         }
+
         // Or use dotenv
         if (file_exists(__DIR__ . '/../../../../.env')) {
             $env = new \Dotenv\Dotenv(__DIR__ . '/../../../..');
             $env->load();
             $env->required('SQW_ID_SITE')->notEmpty();
-            foreach ($config_keys as $key) {
-                $this->$key = getenv($key);
+            foreach (array_keys($this->settings) as $key) {
+                if (getenv($key) !== false) {
+                    $this->settings[$key] = getenv($key);
+                }
             }
+
             return true;
         }
+
         // Or fallback to sqweb.config
         if (file_exists(__DIR__ . '/../../sqweb.config')) {
             $lines = file(__DIR__ . '/../../sqweb.config');
             foreach ($lines as $line) {
                 $tmp = explode('=', $line);
                 $key = $tmp[0];
-                if (in_array($key, $config_keys)) {
+                if (in_array($key, array_keys($this->settings))) {
                     $this->$key = rtrim($tmp[1]);
                 }
             }
+
             return true;
         }
     }
@@ -129,7 +117,7 @@ class SQweb
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_CONNECTTIMEOUT_MS => 1000,
                     CURLOPT_TIMEOUT_MS => 1000,
-                    CURLOPT_USERAGENT => 'SQweb/SDK_PHP 1.6.2',
+                    CURLOPT_USERAGENT => 'SQweb/SDK_PHP 1.7.0',
                     CURLOPT_POSTFIELDS => array(
                         'token' => $_COOKIE['sqw_z'],
                         'site_id' => $site_id,
@@ -152,34 +140,40 @@ class SQweb
      */
     public function script()
     {
-        echo '<script>
-            var _sqw = {
-                id_site: '. $this->SQW_ID_SITE .',
-                sitename: "'. $this->SQW_SITENAME .'",
-                debug: '. $this->SQW_DEBUG .',
-                adblock_modal: '. $this->SQW_ADBLOCK_MODAL .',
-                targeting: '. $this->SQW_TARGETING .',
-                beacon: '. $this->SQW_BEACON .',
-                dwide: '. $this->SQW_DWIDE .',
-                i18n: "'. $this->SQW_LANG .'",
-                msg: "'. $this->SQW_MESSAGE .'",
-                login: "' . $this->SQW_LOGIN . '",
-                connected: "' . $this->SQW_CONNECTED . '",
-                support: "' . $this->SQW_SUPPORT . '",
-                btn_noads: "' . $this->SQW_BTN_NOADS . '",
-                login_tiny: "' . $this->SQW_LOGIN_TINY . '",
-                connected_s: "' . $this->SQW_CONNECTED_S . '",
-                connected_support: "' . $this->SQW_CONNECTED_SUPPORT . '",
-                btn_unlimited: "' . $this->SQW_BTN_UNLIMITED . '",
-                connected_tiny: "' . $this->SQW_CONNECTED_TINY . '"
-            };
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = "https://cdn.multipass.net/multipass.js";
-        document.getElementsByTagName("head")[0].appendChild(script);</script>';
+        $settings = json_encode(array(
+            'wsid' => $this->settings['SQW_ID_SITE'],
+            'sitename' => $this->settings['SQW_SITENAME'],
+            'debug' => $this->settings['SQW_DEBUG'],
+            'adblock_modal' => $this->settings['SQW_ADBLOCK_MODAL'],
+            'targeting' => $this->settings['SQW_TARGETING'],
+            'beacon' => $this->settings['SQW_BEACON'],
+            'dwide' => $this->settings['SQW_DWIDE'],
+            'locale' => $this->settings['SQW_LANG'],
+            'msg' => $this->settings['SQW_MESSAGE'],
+            'autologin' => $this->settings['SQW_AUTOLOGIN'],
+            // User's custom strings for button customization
+            'user_strings' => array(
+                'login' => $this->settings['SQW_LOGIN'],
+                'login_tiny' => $this->settings['SQW_LOGIN_TINY'],
+                'connected' => $this->settings['SQW_CONNECTED'],
+                'connected_tiny' => $this->settings['SQW_CONNECTED_TINY'],
+                'connected_s' => $this->settings['SQW_CONNECTED_S'],
+                'connected_support' => $this->settings['SQW_CONNECTED_SUPPORT'],
+                'btn_unlimited' => $this->settings['SQW_BTN_UNLIMITED'],
+                'btn_noads' => $this->settings['SQW_BTN_NOADS'],
+                'support' => $this->settings['SQW_SUPPORT'],
+            ),
+        ));
+
+        // var_dump($settings); die;
+
+        $output = '<script src="https://cdn.multipass.net/mltpss.min.js" type="text/javascript"></script>' . PHP_EOL;
+        $output .= "<script>var mltpss = new Multipass.default($settings);</script>";
+
+        echo $output;
     }
 
-   /*
+    /*
      * Display a button for locked content
      */
     public function lockingBlock()
@@ -200,11 +194,11 @@ class SQweb
                 $wording = array(
                     'title'         => 'L\'article est terminé ...',
                     'sentence_1'    => '... mais nous avons besoin que vous lisiez ceci: nous avons de plus en plus
-                         de lecteurs chaque jour, mais de moins en moins de revenus publicitaires.',
+                    de lecteurs chaque jour, mais de moins en moins de revenus publicitaires.',
                     'sentence_2'    => 'Nous souhaitons laisser notre contenu accessible à tous. Nous sommes
-                         indépendants et notre travail de qualité prend beaucoup de temps, d\'argent et de dévotion',
+                    indépendants et notre travail de qualité prend beaucoup de temps, d\'argent et de dévotion',
                     'sentence_3'    => 'Vous pouvez nous soutenir avec Multipass qui permet de payer pour un bouquet de
-                         sites, et ainsi financer le travail des créateurs et journalistes que vous aimez.',
+                    sites, et ainsi financer le travail des créateurs et journalistes que vous aimez.',
                     'support'       => 'Soutenez nous avec'
                 );
                 break;
@@ -213,28 +207,27 @@ class SQweb
                 $wording = array(
                     'title'         => 'Continue reading...',
                     'sentence_1'    => '... we need you to hear this: More people are reading our website than ever but
-                         advertising revenues across the media are falling fast.',
+                    advertising revenues across the media are falling fast.',
                     'sentence_2'    => ' We want to keep our content as open as we can. We are independent,
-                         and our quality work takes a lot of time, money and hard work to produce. ',
+                    and our quality work takes a lot of time, money and hard work to produce. ',
                     'sentence_3'    => 'You can support us with Multipass which enables you to pay for a bundle of
-                         websites: you can finance the work of journalists and content creators you love.',
+                    websites: you can finance the work of journalists and content creators you love.',
                     'support'       => 'Support us with'
                 );
                 break;
         }
 
-        $html = '
-            <div class="sqw-article-footer-container">
-                <div class="sqw-article-footer-body">
-                    <div class="sqw-article-footer-body-title">' . $wording['title'] . '</div>
-                    <div class="sqw-article-footer-body-content1">' . $wording['sentence_1'] .'</div>
-                    <div class="sqw-article-footer-body-content2">' . $wording['sentence_2'] . '</div>
-                    <div class="sqw-article-footer-body-content3">' . $wording['sentence_3'] . '</div>
-                </div>
-                <div onclick="sqw.modal_first(event)" class="sqw-article-footer-footer">
-                    <div class="sqw-article-footer-footer-text">' . $wording['support'] . '</div>
-                    <div class="sqw-article-footer-footer-logo-container"></div>
-                </div>
+        $html = '<div class="sqw-article-footer-container">
+            <div class="sqw-article-footer-body">
+            <div class="sqw-article-footer-body-title">' . $wording['title'] . '</div>
+            <div class="sqw-article-footer-body-content1">' . $wording['sentence_1'] .'</div>
+            <div class="sqw-article-footer-body-content2">' . $wording['sentence_2'] . '</div>
+            <div class="sqw-article-footer-body-content3">' . $wording['sentence_3'] . '</div>
+            </div>
+            <div onclick="mltpss.modal_first(event)" class="sqw-article-footer-footer">
+            <div class="sqw-article-footer-footer-text">' . $wording['support'] . '</div>
+            <div class="sqw-article-footer-footer-logo-container"></div>
+            </div>
             </div>';
 
         echo $html;
@@ -249,25 +242,25 @@ class SQweb
 
         return '
             <div class="footer__mp__normalize footer__mp__button_container sqw-paywall-button-container">
-                <div class="footer__mp__button_header">
-                    <div class="footer__mp__button_header_title">' . $wording['warning'] . '</div>
-                    <div onclick="sqw.modal_first(event)" class="footer__mp__button_signin">'
-                    . $wording['already_sub']
-                    . '<span class="footer__mp__button_login footer__mp__button_strong">'
-                    . $wording['login']
-                    . '</span></div>
-                </div>
-                <div onclick="sqw.modal_first(event)" class="footer__mp__normalize footer__mp__button_cta">
-                    <a href="#" class="footer__mp__cta_fresh">' . $wording['unlock'] . '</a>
-                </div>
-                <div class="footer__mp__normalize footer__mp__button_footer">
-                    <p class="footer__mp__normalize footer__mp__button_p">'. $wording['desc'] . '</p>
-                    <a target="_blank" class="footer__mp__button_discover footer__mp__button_strong" href="'
-                    . $wording['href']
-                    . '"><span>></span> <span class="footer__mp__button_footer_txt">'
-                    . $wording['discover']
-                    . '</span></a>
-                </div>
+            <div class="footer__mp__button_header">
+            <div class="footer__mp__button_header_title">' . $wording['warning'] . '</div>
+            <div onclick="mltpss.modal_first(event)" class="footer__mp__button_signin">'
+            . $wording['already_sub']
+            . '<span class="footer__mp__button_login footer__mp__button_strong">'
+            . $wording['login']
+            . '</span></div>
+            </div>
+            <div onclick="mltpss.modal_first(event)" class="footer__mp__normalize footer__mp__button_cta">
+            <a href="#" class="footer__mp__cta_fresh">' . $wording['unlock'] . '</a>
+            </div>
+            <div class="footer__mp__normalize footer__mp__button_footer">
+            <p class="footer__mp__normalize footer__mp__button_p">'. $wording['desc'] . '</p>
+            <a target="_blank" class="footer__mp__button_discover footer__mp__button_strong" href="'
+            . $wording['href']
+            . '"><span>></span> <span class="footer__mp__button_footer_txt">'
+            . $wording['discover']
+            . '</span></a>
+            </div>
             </div>';
     }
 
