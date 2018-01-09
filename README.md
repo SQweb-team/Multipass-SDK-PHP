@@ -64,7 +64,7 @@ For additional settings, see "[Options](#options)" below.
     ```text
     SQW_ID_SITE=YOUR_WEBSITE_ID
     SQW_SITENAME=YOUR_WEBSITE_NAME
-    SQW_LANG=en
+    SQW_LANG=en_US
     ```
 
     **Change `SQW_ID_SITE` with your website ID and `SQW_SITENAME` with the name to show on the large Multipass button**.
@@ -267,7 +267,8 @@ Unless otherwise noted, these options default to `false`. You can set them in yo
 |`SQW_BEACON`|Monitor adblocking rates quietly, without showing any button or banner to the end users.|
 |`SQW_DEBUG`|Output various messages to the browser console while the plugin executes.|
 |`SQW_DWIDE`|Set to `false` to only enable SQweb on the current domain. Defaults to `true`.|
-|`SQW_LANG`|You may pick between `en` and `fr`.|
+|`SQW_LANG`|We support these locales: `en_US`, `en_GB` and `fr_FR`.|
+|`SQW_AUTOLOGIN`|Enable or disable our autologin feature. Defaults to `true`.|
 
 ## Known Issues
 
