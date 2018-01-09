@@ -201,7 +201,7 @@ class SQweb
                     sites, et ainsi financer le travail des créateurs et journalistes que vous aimez.',
                     'support'       => 'Soutenez nous avec'
                 );
-            break;
+                break;
 
             default:
                 $wording = array(
@@ -214,7 +214,7 @@ class SQweb
                     websites: you can finance the work of journalists and content creators you love.',
                     'support'       => 'Support us with'
                 );
-            break;
+                break;
         }
 
         $html = '<div class="sqw-article-footer-container">
@@ -279,7 +279,7 @@ class SQweb
                         'href'          => 'https://www.multipass.net/fr/sites-partenaires-premium-sans-pub-ni-limites',
                         'discover'      => 'Découvrir les partenaires'
                     );
-                break;
+                    break;
 
                 default:
                     $href = 'https://www.multipass.net/en/premium-partners-website-without-ads-nor-restriction';
@@ -292,7 +292,7 @@ class SQweb
                         'href'          => $href,
                         'discover'      => 'Discover all the partners'
                     );
-                break;
+                    break;
             }
         } elseif ($type == 'locking') {
             switch ($this->SQW_LANG) {
@@ -307,7 +307,7 @@ class SQweb
                         'href'          => 'https://www.multipass.net/fr/sites-partenaires-premium-sans-pub-ni-limites',
                         'discover'      => 'Découvrir les partenaires'
                     );
-                break;
+                    break;
 
                 default:
                     $href = 'https://www.multipass.net/en premium-partners-website-without-ads-nor-restriction';
@@ -320,7 +320,7 @@ class SQweb
                         'href'          => $href,
                         'discover'      => 'Discover all the partners'
                     );
-                break;
+                    break;
             }
         }
         return $wording;
