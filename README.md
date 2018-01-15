@@ -1,4 +1,4 @@
-# SQweb - PHP SDK
+# Multipass - PHP SDK
 
 [![Build Status](https://travis-ci.org/SQweb-team/SQweb-SDK-PHP.svg?branch=master)](https://travis-ci.org/SQweb-team/SQweb-SDK-PHP)
 [![Latest Stable Version](https://poser.pugx.org/sqweb/sdk_php/v/stable)](https://packagist.org/packages/sqweb/sdk_php)
@@ -36,7 +36,7 @@ For additional settings, see "[Options](#options)" below.
 
 ### Composer + Manual Configuration
 
-1. In your project root, execute `composer require sqweb/sdk_php`.
+1. In your project root, execute `composer require mltpss/php-sdk`.
 2. Create a new SQweb object passing in its configuration through the constructor. **`SQW_ID_SITE` and `SQW_SITENAME` must be specified**.
 
     ```php

@@ -1,9 +1,10 @@
 <?php
 
 /*
- * SQweb PHP SDK v1.7.0
+ * Multipass PHP SDK v1.7.1
  * @author Pierre Lavaux <pierre@multipass.net>
  * @author Mathieu Darrigade <mathieu@multipass.net>
+ * @author Matthieu Borde <matthieu@sqweb.net>
  * @author Nicolas Verdonck <nicolas@sqweb.com>
  * @author Bastien Botella <bastien@sqweb.com>
  * @link https://github.com/SQweb-team/SQweb-SDK-PHP

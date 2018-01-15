@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.7.1 - 2018-01-15
+ 
+* Renamed the package from SQweb to Multipass
+
 ## v1.7.0 - 2018-01-09
 
 * Now support more locales.

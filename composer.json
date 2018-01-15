@@ -1,5 +1,5 @@
 {
-    "name": "sqweb/sdk_php",
+    "name": "mltpss/php-sdk",
     "license": "GPL v3",
     "authors": [
         {
@@ -15,6 +15,11 @@
         {
             "name": "Mathieu Darrigade",
             "email": "mathieu@sqweb.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Matthieu Borde",
+            "email": "matthieu@sqweb.com",
             "role": "Developer"
         },
         {
