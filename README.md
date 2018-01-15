@@ -18,7 +18,7 @@ If you're using WordPress, we've made it easy for you. Download the SQweb plugin
 
 ### Recommended : Composer + dotenv
 
-1. In your project root, execute `composer require sqweb/sdk_php`.
+1. In your project root, execute `composer require mltpss/php-sdk`.
 
 2. Create a `.env` file at the root of your project, or edit it if you already have one.
 
