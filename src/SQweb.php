@@ -111,7 +111,6 @@ class SQweb
     public function checkCredits()
     {
         if (empty($this->response)) {
-            $site_id = $this->SQW_ID_SITE;
             if (isset($_COOKIE['sqw_z']) && null !== $site_id) {
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
@@ -122,7 +121,7 @@ class SQweb
                     CURLOPT_USERAGENT => 'SQweb/SDK_PHP 1.7.0',
                     CURLOPT_POSTFIELDS => array(
                         'token' => $_COOKIE['sqw_z'],
-                        'site_id' => $site_id,
+                        'site_id' => $this->settings['SQW_ID_SITE'],
                     ),
                 ));
                 $response = curl_exec($curl);
@@ -189,7 +188,7 @@ class SQweb
      */
     public function supportBlock()
     {
-        switch ($this->SQW_LANG) {
+        switch ($this->settings['SQW_LANG']) {
             case 'fr':
             case 'fr_fr':
                 $wording = array(
@@ -267,8 +266,10 @@ class SQweb
 
     private function selectText($type)
     {
-        if ($type == 'support') {
-            switch ($this->SQW_LANG) {
+        $lang = $this->settings['SQW_LANG'];
+
+         if ($type == 'support') {
+            switch ($lang) {
                 case 'fr':
                 case 'fr_fr':
                     $wording = array(
@@ -296,7 +297,7 @@ class SQweb
                     break;
             }
         } elseif ($type == 'locking') {
-            switch ($this->SQW_LANG) {
+            switch ($lang) {
                 case 'fr':
                 case 'fr_fr':
                     $wording = array(
