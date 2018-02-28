@@ -139,7 +139,7 @@ class SQweb
     /**
      * Output the JavaScript tag with its configuration object.
      */
-    public function script()
+    public function script($display = true)
     {
         $settings = json_encode(array(
             'wsid' => $this->settings['SQW_ID_SITE'],
@@ -170,6 +170,9 @@ class SQweb
         $output = '<script src="https://cdn.multipass.net/mltpss.min.js" type="text/javascript"></script>' . PHP_EOL;
         $output .= "<script>var mltpss = new Multipass.default($settings);</script>";
 
+        if ($display == false) {
+            return $output;
+        }
         echo $output;
     }
 
@@ -236,7 +239,7 @@ class SQweb
     /*
      * Return the good button according to parent function.
      */
-    private function returnBlock($type)
+    public function returnBlock($type)
     {
         $wording = $this->selectText($type);
 
@@ -264,7 +267,7 @@ class SQweb
             </div>';
     }
 
-    private function selectText($type)
+    public function selectText($type)
     {
         $lang = $this->settings['SQW_LANG'];
 
