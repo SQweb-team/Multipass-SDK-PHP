@@ -8,6 +8,8 @@ SQW_BEACON=0
 SQW_DEBUG=0
 SQW_DWIDE=1
 SQW_LANG=en
+SQW_AUTOLOGIN=1
+SQW_TUNNEL=support
 
 #Buttons customization (see README.md)
 

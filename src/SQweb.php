@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Multipass PHP SDK v1.7.1
+ * Multipass PHP SDK v1.7.2
  * @author Pierre Lavaux <pierre@multipass.net>
  * @author Mathieu Darrigade <mathieu@multipass.net>
  * @author Matthieu Borde <matthieu@sqweb.net>
@@ -48,6 +48,7 @@ class SQweb
         'SQW_CONNECTED_TINY' => '',
         'SQW_CONNECTED_SUPPORT' => '',
         'SQW_AUTOLOGIN' => 'true',
+        'SQW_TUNNEL' => 'support',
     );
 
     /**
@@ -152,6 +153,7 @@ class SQweb
             'locale' => $this->settings['SQW_LANG'],
             'msg' => $this->settings['SQW_MESSAGE'],
             'autologin' => $this->settings['SQW_AUTOLOGIN'],
+            'tunnel' => $this->settings['SQW_TUNNEL'],
             // User's custom strings for button customization
             'user_strings' => array(
                 'login' => $this->settings['SQW_LOGIN'],
@@ -165,8 +167,6 @@ class SQweb
                 'support' => $this->settings['SQW_SUPPORT'],
             ),
         ));
-
-        // var_dump($settings); die;
 
         $output = '<script src="https://cdn.multipass.net/mltpss.min.js" type="text/javascript"></script>' . PHP_EOL;
         $output .= "<script>var mltpss = new Multipass.default($settings);</script>";
