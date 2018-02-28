@@ -268,7 +268,7 @@ class SQweb
     {
         $lang = $this->settings['SQW_LANG'];
 
-         if ($type == 'support') {
+        if ($type == 'support') {
             switch ($lang) {
                 case 'fr':
                 case 'fr_fr':
