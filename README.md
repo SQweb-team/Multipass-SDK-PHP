@@ -27,7 +27,7 @@ If you're using WordPress, we've made it easy for you. Download the SQweb plugin
     ```php
     SQW_ID_SITE=YOUR_WEBSITE_ID
     SQW_SITENAME=YOUR_WEBSITE_NAME
-    SQW_LANG=en
+    SQW_LANG=en_US
     ```
 
     **Change `SQW_ID_SITE` with your website ID and `SQW_SITENAME` with the name to show on the large Multipass button**.
@@ -133,8 +133,8 @@ $sqweb->button('large');
 
 ### 4.b Customizing the Multipass button
 
-If you want to customize our different type of button, put the following in your config file (`.env` if you used composer and dotenv or `sqweb.config` if you did not) of in the sqweb config file.  
-For instance:  
+If you want to customize our different type of button, put the following in your config file (`.env` if you used composer and dotenv or `sqweb.config` if you did not) of in the sqweb config file.
+For instance:
 ``SQW_LOGIN=Hello world``
 Will show  `Hello world` instead of `Premium with Multipass` on the regular button for logged out visitors.
 

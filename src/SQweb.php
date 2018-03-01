@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Multipass PHP SDK v1.7.2
+ * Multipass PHP SDK v1.7.3
  * @author Pierre Lavaux <pierre@multipass.net>
  * @author Mathieu Darrigade <mathieu@multipass.net>
  * @author Matthieu Borde <matthieu@sqweb.net>
@@ -111,7 +111,7 @@ class SQweb
     public function checkCredits()
     {
         if (empty($this->response)) {
-            if (isset($_COOKIE['sqw_z']) && null !== $site_id) {
+            if (isset($_COOKIE['sqw_z']) && null !== $this->settings['SQW_ID_SITE']) {
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
                     CURLOPT_URL => 'https://api.multipass.net/token/check',
@@ -173,6 +173,7 @@ class SQweb
         if ($display == false) {
             return $output;
         }
+
         echo $output;
     }
 

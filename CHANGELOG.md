@@ -1,11 +1,15 @@
 # Changelog
 
+## v1.7.3 - 2018-03-01
+
+* Fixed a wrong variable name.
+
 ## v1.7.2 - 2018-02-28
 
 * Added a tunnel option.
 
 ## v1.7.1 - 2018-01-15
- 
+
 * Renamed the package from SQweb to Multipass
 
 ## v1.7.0 - 2018-01-09
