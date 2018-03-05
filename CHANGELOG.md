@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.7.4 - 2018-03-05
+
+* Improved the way we log actions with the support
+
 ## v1.7.3 - 2018-03-01
 
 * Fixed a wrong variable name.

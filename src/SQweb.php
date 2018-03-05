@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Multipass PHP SDK v1.7.3
+ * Multipass PHP SDK v1.7.4
  * @author Pierre Lavaux <pierre@multipass.net>
  * @author Mathieu Darrigade <mathieu@multipass.net>
  * @author Matthieu Borde <matthieu@sqweb.net>
@@ -221,7 +221,7 @@ class SQweb
                 break;
         }
 
-        $html = '<div class="sqw-article-footer-container">
+        $html = '<div class="sqw-article-footer-container sqw-support-us-footer">
             <div class="sqw-article-footer-body">
             <div class="sqw-article-footer-body-title">' . $wording['title'] . '</div>
             <div class="sqw-article-footer-body-content1">' . $wording['sentence_1'] .'</div>
