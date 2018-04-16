@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.7.5 - 2018-04-16
+
+* Fixed some typos.
+
 ## v1.7.4 - 2018-03-05
 
 * Improved the way we log actions with the support

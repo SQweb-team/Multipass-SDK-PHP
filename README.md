@@ -261,10 +261,6 @@ Unless otherwise noted, these options default to `false`. You can set them in yo
 
 |Option|Description
 |---|---|
-|`SQW_MESSAGE`|A custom message that will be shown to your adblockers. Quotes must be escaped.|
-|`SQW_ADBLOCK_MODAL`|Automatically display the Multipass modal to detected adblockers.|
-|`SQW_TARGETING`|Only show the button to detected adblockers. Cannot be combined with `beacon` mode.|
-|`SQW_BEACON`|Monitor adblocking rates quietly, without showing any button or banner to the end users.|
 |`SQW_DEBUG`|Output various messages to the browser console while the plugin executes.|
 |`SQW_DWIDE`|Set to `false` to only enable SQweb on the current domain. Defaults to `true`.|
 |`SQW_LANG`|We support these locales: `en_US`, `en_GB` and `fr_FR`.|

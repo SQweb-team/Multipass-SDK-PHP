@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Multipass PHP SDK v1.7.4
+ * Multipass PHP SDK v1.7.5
  * @author Pierre Lavaux <pierre@multipass.net>
  * @author Mathieu Darrigade <mathieu@multipass.net>
  * @author Matthieu Borde <matthieu@sqweb.net>
@@ -32,12 +32,9 @@ class SQweb
         'SQW_ID_SITE' => null,
         'SQW_SITENAME' => '',
         'SQW_DEBUG' => 'false',
-        'SQW_ADBLOCK_MODAL' => 'false',
-        'SQW_TARGETING' => 'false',
         'SQW_BEACON' => 'false',
         'SQW_DWIDE' => 'false',
         'SQW_LANG' => 'en_US',
-        'SQW_MESSAGE' => '',
         'SQW_LOGIN' => '',
         'SQW_SUPPORT' => '',
         'SQW_CONNECTED' => '',
@@ -145,12 +142,9 @@ class SQweb
             'wsid' => $this->settings['SQW_ID_SITE'],
             'sitename' => $this->settings['SQW_SITENAME'],
             'debug' => $this->settings['SQW_DEBUG'],
-            'adblock_modal' => $this->settings['SQW_ADBLOCK_MODAL'],
-            'targeting' => $this->settings['SQW_TARGETING'],
             'beacon' => $this->settings['SQW_BEACON'],
             'dwide' => $this->settings['SQW_DWIDE'],
             'locale' => $this->settings['SQW_LANG'],
-            'msg' => $this->settings['SQW_MESSAGE'],
             'autologin' => $this->settings['SQW_AUTOLOGIN'],
             'tunnel' => $this->settings['SQW_TUNNEL'],
             // User's custom strings for button customization
