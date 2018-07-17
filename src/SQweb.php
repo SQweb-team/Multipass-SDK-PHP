@@ -341,7 +341,7 @@ class SQweb
         } elseif ($size === 'support') {
             echo '<div class="sqweb-button-support"></div>';
         } elseif ($size === 'free') {
-            echo '<div class="sqweb-button multipass-free"></div>'
+            echo '<div class="sqweb-button multipass-free"></div>';
         } else { // multipass-regular
             echo '<div class="sqweb-button"></div>';
         }
