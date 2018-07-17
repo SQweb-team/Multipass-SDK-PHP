@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Multipass PHP SDK v1.7.5
+ * Multipass PHP SDK v1.7.6
  * @author Pierre Lavaux <pierre@multipass.net>
  * @author Mathieu Darrigade <mathieu@multipass.net>
  * @author Matthieu Borde <matthieu@sqweb.net>
@@ -340,6 +340,8 @@ class SQweb
             echo '<div class="sqweb-button multipass-large"></div>';
         } elseif ($size === 'support') {
             echo '<div class="sqweb-button-support"></div>';
+        } elseif ($size === 'free') {
+            echo '<div class="sqweb-button multipass-free"></div>'
         } else { // multipass-regular
             echo '<div class="sqweb-button"></div>';
         }

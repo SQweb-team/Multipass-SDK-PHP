@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.7.6 - 2018-07-17
+
+* Added the free button
+
 ## v1.7.5 - 2018-04-16
 
 * Fixed some typos.

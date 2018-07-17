@@ -129,6 +129,12 @@ $sqweb->button('slim');
 $sqweb->button('large');
 ```
 
+We also have another type of button, the free button, which offer to share the user's email with you.
+To display it, use this function:
+```php
+$sqweb->button('free');
+```
+
 ![Example Buttons](https://cdn.multipass.net/github/buttons@2x.png "Example Buttons")
 
 ### 4.b Customizing the Multipass button
