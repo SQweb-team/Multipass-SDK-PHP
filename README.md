@@ -117,6 +117,14 @@ if ($sqweb->checkCredits() > 0) {
 
 If he wants it, the user can share his email with you, to retrieve it, check if the cookie named `mltpss_e` exists. Inside will be a base64 encoded string you need to retrieve and decode on your side.
 
+for instance:
+```php
+if ($_COOKIE['mltpss_e']) {
+    $email = base64_decode($_COOKIE['mltpss_e']);
+}
+```
+This piece of code will store the email in the $email variable if the cookie is set.
+
 ### 4.a Showing the Multipass button
 
 Use this code to display the Multipass button on your pages:
