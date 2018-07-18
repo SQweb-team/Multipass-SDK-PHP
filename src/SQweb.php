@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Multipass PHP SDK v1.7.6
+ * Multipass PHP SDK v1.7.7
  * @author Pierre Lavaux <pierre@multipass.net>
  * @author Mathieu Darrigade <mathieu@multipass.net>
  * @author Matthieu Borde <matthieu@sqweb.net>
@@ -92,7 +92,7 @@ class SQweb
                 $tmp = explode('=', $line);
                 $key = $tmp[0];
                 if (in_array($key, array_keys($this->settings))) {
-                    $this->$key = rtrim($tmp[1]);
+                    $this->settings[$key] = rtrim($tmp[1]);
                 }
             }
 

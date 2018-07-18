@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.7.7 - 2018-07-18
+
+* Improved the configuration setup
+
 ## v1.7.6 - 2018-07-17
 
 * Added the free button
