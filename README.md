@@ -115,7 +115,7 @@ if ($sqweb->checkCredits() > 0) {
 
 ### 3.b Retrieving the user's email
 
-If he wants it, the user can share his email with you, to retrieve it, check if the cookie names mltpss_e exists. Inside will be a base64 encoded string you need to retrieve and decode on your side.
+If he wants it, the user can share his email with you, to retrieve it, check if the cookie named `mltpss_e` exists. Inside will be a base64 encoded string you need to retrieve and decode on your side.
 
 ### 4.a Showing the Multipass button
 
