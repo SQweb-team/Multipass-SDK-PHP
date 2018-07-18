@@ -101,7 +101,7 @@ Make sure it is present on all your pages. Most likely you'll just have to add i
 
 **If you previously had a SQweb JavaScript tag, make sure to remove it to avoid any conflicts.**
 
-### 3. Checking the credits of your subscribers
+### 3.a Checking the credits of your subscribers
 
 Check if the user has credits, so that you can disable ads and/or unlock premium content.
 
@@ -112,6 +112,10 @@ if ($sqweb->checkCredits() > 0) {
     // ADS
 }
 ```
+
+### 3.b Retrieving the user's email
+
+If he wants it, the user can share his email with you, to retrieve it, check if the cookie names mltpss_e exists. Inside will be a base64 encoded string you need to retrieve and decode on your side.
 
 ### 4.a Showing the Multipass button
 
